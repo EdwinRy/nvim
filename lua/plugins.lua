@@ -27,6 +27,8 @@ return require('packer').startup(function(use)
 
     use 'kdheepak/lazygit.nvim'
 
+    use 'feline-nvim/feline.nvim'
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
