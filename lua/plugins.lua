@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
         }
     }
 
+    use 'kdheepak/lazygit.nvim'
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -35,6 +36,15 @@ return require('packer').startup(function(use)
     }
 
     use "lukas-reineke/indent-blankline.nvim"
+
+    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+
+    use {
+        "NvChad/nvterm",
+        config = function()
+            require("nvterm").setup()
+        end,
+    }
 
     use {
         "windwp/nvim-autopairs",

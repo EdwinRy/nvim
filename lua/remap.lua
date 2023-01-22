@@ -16,12 +16,16 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s")
 
 -- BUFFERS
 vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>")
+vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 
 
 -- MOVE HIGHLIGHT
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+
+-- PLUGINS 
+vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>")
 
 
 vim.keymap.set("n", "J", "mzJ`z")
