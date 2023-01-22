@@ -29,3 +29,16 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
+
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0a2861" })
+
+vim.opt.listchars:append({
+    tab = "→ ",
+    space = "·",
+    nbsp = "␣",
+    trail = "•",
+    eol = "$",
+    precedes = "«",
+    extends = "»",
+})
+vim.opt.list = true

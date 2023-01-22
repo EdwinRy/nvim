@@ -17,6 +17,8 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s")
 -- BUFFERS
 vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+vim.keymap.set("n", "<leader>]", ":bn<CR>")
+vim.keymap.set("n", "<leader>[", ":bp<CR>")
 
 
 -- MOVE HIGHLIGHT

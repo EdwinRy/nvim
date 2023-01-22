@@ -30,6 +30,11 @@ return require('packer').startup(function(use)
     use 'feline-nvim/feline.nvim'
 
     use {
+        'nmac427/guess-indent.nvim',
+        config = function() require('guess-indent').setup {} end,
+    }
+
+    use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
@@ -39,13 +44,13 @@ return require('packer').startup(function(use)
 
     use "lukas-reineke/indent-blankline.nvim"
 
-    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
-
-    use {
-        "NvChad/nvterm",
+    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
+        after = "catppuccin",
         config = function()
-            require("nvterm").setup()
-        end,
+            require("bufferline").setup {
+                highlights = require("catppuccin.groups.integrations.bufferline").get()
+            }
+        end
     }
 
     use {
@@ -97,7 +102,10 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- Lua
+
+    use { "catppuccin/nvim", as = "catppuccin" }
+
+
     use {
         "folke/which-key.nvim",
         config = function()
