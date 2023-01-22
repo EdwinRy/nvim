@@ -17,6 +17,8 @@ function rose_pine()
     vim.api.nvim_set_hl(0, "NonText", { fg = "#103e94" })
     -- vim.api.nvim_set_hl(0, "SpecialKey", { fg = "#103e94" })
 
+    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0a2861" })
+
 end
 
 function rose_pine_opaque()
@@ -68,5 +70,5 @@ function cattpuccin()
 
 end
 
-rose_pine()
--- cattpuccin()
+-- rose_pine()
+cattpuccin()
