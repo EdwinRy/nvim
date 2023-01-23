@@ -10,6 +10,11 @@ vim.keymap.set("n", "<leader>wj", "<C-w>j")
 vim.keymap.set("n", "<leader>wk", "<C-w>k")
 vim.keymap.set("n", "<leader>wl", "<C-w>l")
 
+vim.keymap.set("n", "<leader>wH", "<C-w>H")
+vim.keymap.set("n", "<leader>wJ", "<C-w>J")
+vim.keymap.set("n", "<leader>wK", "<C-w>K")
+vim.keymap.set("n", "<leader>wL", "<C-w>L")
+
 vim.keymap.set("n", "<leader>wv", "<C-w>v")
 vim.keymap.set("n", "<leader>ws", "<C-w>s")
 

@@ -11,23 +11,29 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-
 return require('packer').startup(function(use)
 
-    -- packer itself
-
     use 'wbthomason/packer.nvim'
-    use 'terrortylor/nvim-comment'
+    use {
+        'terrortylor/nvim-comment',
+        config = function() require("plugins.nvim_comment") end
+    }
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        }
+        },
+        config = function()
+            require("plugins.nvim_tree")
+        end
     }
 
     use 'kdheepak/lazygit.nvim'
 
-    use 'feline-nvim/feline.nvim'
+    use {
+        'feline-nvim/feline.nvim',
+        config = function() require('plugins.feline') end
+    }
 
     use {
         'nmac427/guess-indent.nvim',
@@ -47,9 +53,10 @@ return require('packer').startup(function(use)
     use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
         after = "catppuccin",
         config = function()
-            require("bufferline").setup {
-                highlights = require("catppuccin.groups.integrations.bufferline").get()
-            }
+            -- require("bufferline").setup {
+            --     highlights = require("catppuccin.groups.integrations.bufferline").get()
+            -- }
+            require("plugins.bufferline")
         end
     }
 
@@ -62,14 +69,17 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = function()
+            require("plugins.telescope")
+        end
     }
 
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            require("plugins.theme")
         end
     })
 
@@ -82,6 +92,9 @@ return require('packer').startup(function(use)
 
     use {
         'VonHeikemen/lsp-zero.nvim',
+        config = function()
+            require("plugins.lsp")
+        end,
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -103,7 +116,13 @@ return require('packer').startup(function(use)
     }
 
 
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function()
+            require("plugins.theme")
+        end
+    }
 
 
     use {
@@ -111,6 +130,7 @@ return require('packer').startup(function(use)
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
+            require("plugins.which_key")
         end
     }
 
