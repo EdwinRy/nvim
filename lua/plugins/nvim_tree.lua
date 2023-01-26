@@ -32,7 +32,7 @@ require("nvim-tree").setup({
 local api = require("nvim-tree.api")
 
 vim.keymap.set("n", "<leader>n", function()
-    api.tree.focus()
+    vim.cmd([[NvimTreeFindFile]])
 end)
 vim.keymap.set("n", "<leader>m", function()
     api.tree.close()

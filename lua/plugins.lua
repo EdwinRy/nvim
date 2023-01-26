@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
         end
     }
 
+    use 'mustache/vim-mustache-handlebars'
     use 'kdheepak/lazygit.nvim'
 
     use {
@@ -49,6 +50,8 @@ return require('packer').startup(function(use)
     }
 
     use "lukas-reineke/indent-blankline.nvim"
+
+    use {'luochen1990/rainbow', config = function() vim.g.rainbow_active = 1 end}
 
     use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
         after = "catppuccin",
