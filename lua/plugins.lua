@@ -118,6 +118,12 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        'f3fora/cmp-spell',
+        config = function() require("plugins.spellcheck") end,
+        requires = {{'hrsh7th/nvim-cmp'}}
+    }
+
 
     use {
         "catppuccin/nvim",

@@ -34,6 +34,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- PLUGINS 
 vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>")
 
+-- CONFIG
+vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")
+vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<CR>")
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
