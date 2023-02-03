@@ -87,13 +87,6 @@ return require('packer').startup(function(use)
     })
 
     use {
-        'goolord/alpha-nvim',
-        config = function()
-            require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
-        end
-    }
-
-    use {
         'VonHeikemen/lsp-zero.nvim',
         config = function()
             require("plugins.lsp")
