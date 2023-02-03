@@ -13,6 +13,8 @@ require("nvim-tree").setup({
     sort_by = "case_sensitive",
     view = {
         adaptive_size = true,
+        numbers = true,
+        relativenumber = true,
         mappings = {
             list = {
                 { key = "u", action = "dir_up" },
@@ -22,6 +24,17 @@ require("nvim-tree").setup({
     },
     renderer = {
         group_empty = true,
+        indent_markers = {
+            enable = true,
+            inline_arrows = true,
+            icons = {
+                corner = "└",
+                edge = "│",
+                item = "│",
+                bottom = "─",
+                none = " ",
+            },
+        },
     },
     filters = {
         dotfiles = true,

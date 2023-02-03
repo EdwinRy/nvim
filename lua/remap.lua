@@ -21,9 +21,12 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s")
 
 -- BUFFERS
 vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>")
+vim.keymap.set("n", "<leader>z", ":bd<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 vim.keymap.set("n", "<leader>]", ":bn<CR>")
 vim.keymap.set("n", "<leader>[", ":bp<CR>")
+
+vim.keymap.set("n", "<leader>sw", ":set sw=")
 
 
 -- MOVE HIGHLIGHT
@@ -37,6 +40,7 @@ vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>")
 -- CONFIG
 vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<CR>")
+vim.keymap.set("n", "<leader>cp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/plugins.lua<CR>");
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -44,12 +48,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -75,5 +73,4 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/plugins.lua<CR>");
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
