@@ -15,8 +15,8 @@ vim.keymap.set("n", "<leader>wJ", "<C-w>J")
 vim.keymap.set("n", "<leader>wK", "<C-w>K")
 vim.keymap.set("n", "<leader>wL", "<C-w>L")
 
-vim.keymap.set("n", "<leader>wv", "<C-w>v")
-vim.keymap.set("n", "<leader>ws", "<C-w>s")
+vim.keymap.set("n", "<leader>wv", "<C-w>v<C-w>l")
+vim.keymap.set("n", "<leader>ws", "<C-w>s<C-w>j")
 
 
 -- BUFFERS
@@ -33,9 +33,12 @@ vim.keymap.set("n", "<leader>sw", ":set sw=")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- NAVIGATION
+vim.keymap.set("n", "<leader>t", "zt")
 
 -- PLUGINS 
 vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>")
+vim.keymap.set("n", "<leader>ast", ":TSPlayground<CR>")
 
 -- CONFIG
 vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")

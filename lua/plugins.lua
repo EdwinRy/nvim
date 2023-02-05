@@ -11,9 +11,12 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+require("plugins.spellcheck")
+
 return require('packer').startup(function(use)
 
     use 'wbthomason/packer.nvim'
+
     use {
         'terrortylor/nvim-comment',
         config = function() require("plugins.nvim_comment") end
@@ -29,6 +32,7 @@ return require('packer').startup(function(use)
     }
 
     use 'mustache/vim-mustache-handlebars'
+
     use 'kdheepak/lazygit.nvim'
 
     use {
@@ -49,16 +53,30 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use {
+        'nvim-treesitter/playground',
+
+    }
+
+
+    -- use {
+    --     'nvim-treesitter/nvim-treesitter-context',
+    --     config = function() require('plugins.context') end,
+    -- }
+    --
+
+    use {
+        'wellle/context.vim',
+        config = function() require('plugins.context') end,
+    }
+
     use "lukas-reineke/indent-blankline.nvim"
 
-    use {'luochen1990/rainbow', config = function() vim.g.rainbow_active = 1 end}
+    use { 'luochen1990/rainbow', config = function() vim.g.rainbow_active = 1 end }
 
     use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
         after = "catppuccin",
         config = function()
-            -- require("bufferline").setup {
-            --     highlights = require("catppuccin.groups.integrations.bufferline").get()
-            -- }
             require("plugins.bufferline")
         end
     }
@@ -92,6 +110,7 @@ return require('packer').startup(function(use)
             require("plugins.lsp")
         end,
         requires = {
+
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
@@ -111,11 +130,14 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        'f3fora/cmp-spell',
-        config = function() require("plugins.spellcheck") end,
-        requires = {{'hrsh7th/nvim-cmp'}}
-    }
+
+    -- use { 'jose-elias-alvarez/null-ls.nvim' }
+
+    -- use {
+    --     'f3fora/cmp-spell',
+    --     config = function() require("plugins.spellcheck") end,
+    --     requires = { { 'hrsh7th/nvim-cmp' } }
+    -- }
 
 
     use {
@@ -146,3 +168,4 @@ return require('packer').startup(function(use)
     end
 
 end)
+

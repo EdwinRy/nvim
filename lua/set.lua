@@ -42,3 +42,11 @@ vim.opt.listchars:append({
     extends = "»",
 })
 vim.opt.list = true
+
+
+vim.o.spellcapcheck = nil
+vim.o.spelloptions = "camel"
+vim.o.spelllang = 'en_gb'
+vim.o.spell = true
+
+vim.api.nvim_create_autocmd("BufEnter", { command = [[set spelloptions=camel]] })
