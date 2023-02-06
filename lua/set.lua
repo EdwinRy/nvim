@@ -50,3 +50,5 @@ vim.o.spelllang = 'en_gb'
 vim.o.spell = true
 
 vim.api.nvim_create_autocmd("BufEnter", { command = [[set spelloptions=camel]] })
+-- vim.cmd('syn match ShortWords "\\b\\w{1,4}\\b" contains=@NoSpell')
+-- vim.cmd('syn match ShortWords /\\b\\w{1,4}\\b/ contains=@nospell')

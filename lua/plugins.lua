@@ -11,8 +11,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-require("plugins.spellcheck")
-
 return require('packer').startup(function(use)
 
     use 'wbthomason/packer.nvim'
