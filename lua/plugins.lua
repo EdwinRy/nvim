@@ -137,6 +137,12 @@ return require('packer').startup(function(use)
     --     requires = { { 'hrsh7th/nvim-cmp' } }
     -- }
 
+    use {
+        "kamykn/spelunker.vim",
+        config = function()
+            require("plugins.spell")
+        end
+    }
 
     use {
         "catppuccin/nvim",

@@ -41,6 +41,7 @@ vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>")
 vim.keymap.set("n", "<leader>ast", ":TSPlayground<CR>")
 
 -- CONFIG
+
 vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>cp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/plugins.lua<CR>");

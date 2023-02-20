@@ -44,11 +44,10 @@ vim.opt.listchars:append({
 vim.opt.list = true
 
 
-vim.o.spellcapcheck = nil
-vim.o.spelloptions = "camel"
-vim.o.spelllang = 'en_gb'
-vim.o.spell = true
+-- vim.o.spellcapcheck = nil
+-- vim.o.spelloptions = "camel"
+-- vim.o.spelllang = 'en_gb'
+-- vim.o.spell = true
+-- vim.api.nvim_create_autocmd("BufEnter", { command = [[set spelloptions=camel]] })
+-- vim.cmd("syn match ShortWords /\a\\{2,4}/ contains=@NoSpell")
 
-vim.api.nvim_create_autocmd("BufEnter", { command = [[set spelloptions=camel]] })
--- vim.cmd('syn match ShortWords "\\b\\w{1,4}\\b" contains=@NoSpell')
--- vim.cmd('syn match ShortWords /\\b\\w{1,4}\\b/ contains=@nospell')
