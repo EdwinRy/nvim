@@ -24,7 +24,9 @@ vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>")
 vim.keymap.set("n", "<leader>z", ":bd<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 vim.keymap.set("n", "<leader>]", ":bn<CR>")
+vim.keymap.set("n", "<C-]>", ":bn<CR>")
 vim.keymap.set("n", "<leader>[", ":bp<CR>")
+vim.keymap.set("n", "<C-[>", ":bp<CR>")
 
 vim.keymap.set("n", "<leader>sw", ":set sw=")
 

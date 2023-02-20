@@ -1,5 +1,5 @@
 
-vim.o.spell = false
+-- vim.o.spell = false
 
 -- Enable spelunker.vim. (default: 1)
 -- 1: enable
@@ -51,7 +51,7 @@ vim.g.spelunker_disable_acronym_checking = 1
 vim.g.spelunker_disable_backquoted_checking = 0
 
 -- Disable default autogroup. (default: 0)
-vim.g.spelunker_disable_auto_group = 1
+vim.g.spelunker_disable_auto_group = 0
 
 -- -- Create own custom autogroup to enable spelunker.vim for specific filetypes.
 -- augroup spelunker
