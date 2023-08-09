@@ -15,6 +15,8 @@ return require('packer').startup(function(use)
 
     use 'wbthomason/packer.nvim'
 
+    use 'github/copilot.vim'
+
     use {
         'terrortylor/nvim-comment',
         config = function() require("plugins.nvim_comment") end
@@ -93,6 +95,17 @@ return require('packer').startup(function(use)
             require("plugins.telescope")
         end
     }
+
+    -- use({
+    --     "giusgad/pets.nvim",
+    --     requires = {
+    --         "edluffy/hologram.nvim",
+    --         "MunifTanjim/nui.nvim",
+    --     },
+    --     config = function()
+    --         require("pets").setup({})
+    --     end
+    -- })
 
     use({
         'rose-pine/neovim',

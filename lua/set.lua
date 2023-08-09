@@ -43,6 +43,7 @@ vim.opt.listchars:append({
 })
 vim.opt.list = true
 
+-- vim.g.do_filetype_lua = 1
 
 -- vim.o.spellcapcheck = nil
 -- vim.o.spelloptions = "camel"

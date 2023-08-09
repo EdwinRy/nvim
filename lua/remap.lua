@@ -10,6 +10,11 @@ vim.keymap.set("n", "<leader>wj", "<C-w>j")
 vim.keymap.set("n", "<leader>wk", "<C-w>k")
 vim.keymap.set("n", "<leader>wl", "<C-w>l")
 
+vim.keymap.set("n", "˙", "<C-w>h")
+vim.keymap.set("n", "∆", "<C-w>j")
+vim.keymap.set("n", "˚", "<C-w>k")
+vim.keymap.set("n", "¬", "<C-w>l")
+
 vim.keymap.set("n", "<leader>wH", "<C-w>H")
 vim.keymap.set("n", "<leader>wJ", "<C-w>J")
 vim.keymap.set("n", "<leader>wK", "<C-w>K")
@@ -24,9 +29,12 @@ vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>")
 vim.keymap.set("n", "<leader>z", ":bd<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 vim.keymap.set("n", "<leader>]", ":bn<CR>")
-vim.keymap.set("n", "<C-]>", ":bn<CR>")
 vim.keymap.set("n", "<leader>[", ":bp<CR>")
-vim.keymap.set("n", "<C-[>", ":bp<CR>")
+vim.keymap.set("n", "<M-]>", ":bn<CR>")
+vim.keymap.set("n", "<M-[>", ":bp<CR>")
+
+vim.keymap.set("n", "‘", ":bn<CR>")
+vim.keymap.set("n", "“", ":bp<CR>")
 
 vim.keymap.set("n", "<leader>sw", ":set sw=")
 
