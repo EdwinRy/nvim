@@ -1,4 +1,3 @@
--- vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -42,6 +41,27 @@ vim.opt.listchars:append({
     extends = "»",
 })
 vim.opt.list = true
+
+vim.o.mouse = 'a'
+
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+vim.o.completeopt = 'menuone,noselect'
+
+
+
+-- highlight on yank
+-- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+
 
 -- vim.g.do_filetype_lua = 1
 

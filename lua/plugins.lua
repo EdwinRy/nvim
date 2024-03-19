@@ -1,126 +1,164 @@
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
+local plugins = {
+    -- File searching
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.4',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require("plugins.telescope")
+        end
+    },
 
-return require('packer').startup(function(use)
-
-    use 'wbthomason/packer.nvim'
-
-    use 'github/copilot.vim'
-
-    use {
-        'terrortylor/nvim-comment',
-        config = function() require("plugins.nvim_comment") end
-    }
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    -- File explorer
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
         },
         config = function()
             require("plugins.nvim_tree")
         end
-    }
+    },
 
-    use 'mustache/vim-mustache-handlebars'
-
-    use 'kdheepak/lazygit.nvim'
-
-    use {
-        'feline-nvim/feline.nvim',
-        config = function() require('plugins.feline') end
-    }
-
-    use {
-        'nmac427/guess-indent.nvim',
-        config = function() require('guess-indent').setup {} end,
-    }
-
-    use {
+    -- Syntax parsing
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        init = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            require 'nvim-treesitter.configs'.setup {
+                ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua", "rust" },
+                sync_install = false,
+                auto_install = true,
+            }
             ts_update()
-        end,
-    }
-
-    use {
-        'nvim-treesitter/playground',
-
-    }
-
-
-    -- use {
-    --     'nvim-treesitter/nvim-treesitter-context',
-    --     config = function() require('plugins.context') end,
-    -- }
-    --
-
-    use {
-        'wellle/context.vim',
-        config = function() require('plugins.context') end,
-    }
-
-    use "lukas-reineke/indent-blankline.nvim"
-
-    use { 'luochen1990/rainbow', config = function() vim.g.rainbow_active = 1 end }
-
-    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
-        after = "catppuccin",
-        config = function()
-            require("plugins.bufferline")
+            vim.cmd("TSToggle highlight")
         end
-    }
+    },
 
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
-
-    use 'justinmk/vim-sneak'
-
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { { 'nvim-lua/plenary.nvim' } },
+    -- Keymap help
+    {
+        "folke/which-key.nvim",
         config = function()
-            require("plugins.telescope")
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("plugins.which_key")
         end
-    }
+    },
 
-    -- use({
-    --     "giusgad/pets.nvim",
-    --     requires = {
-    --         "edluffy/hologram.nvim",
-    --         "MunifTanjim/nui.nvim",
-    --     },
-    --     config = function()
-    --         require("pets").setup({})
-    --     end
-    -- })
-
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
+    -- Theme
+    {
+        "catppuccin/nvim",
+        lazy = false,
+        name = "catppuccin",
+        priority = 1000,
         config = function()
             require("plugins.theme")
         end
-    })
+    },
 
-    use {
+    -- Git
+    {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        -- dependencies = {
+        --     "nvim-lua/plenary.nvim",
+        -- },
+    },
+
+    -- Surround
+    { "tpope/vim-surround" },
+
+    -- TabStop
+    -- { "tpope/vim-sleuth" },
+
+    -- -- Blank lines
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+        config = function()
+            require("ibl").setup({
+                scope = {
+                    show_start = false,
+                    show_end = false,
+                }
+            })
+        end,
+    },
+
+    {
+        "nmac427/guess-indent.nvim",
+        config = function()
+            require("guess-indent").setup{}
+        end,
+    },
+
+    -- Diagnostics display
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    },
+
+    -- Comment
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
+        },
+        lazy = false,
+    },
+
+    -- Autocomplete
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            -- Snippet Engine & its associated nvim-cmp source
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+
+            -- Adds LSP completion capabilities
+            'hrsh7th/cmp-nvim-lsp',
+
+            -- Adds a number of user-friendly snippets
+            'rafamadriz/friendly-snippets',
+        },
+    },
+
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup{}
+        end
+    },
+
+    -- LSP
+    {
         'VonHeikemen/lsp-zero.nvim',
         config = function()
             require("plugins.lsp")
         end,
-        requires = {
+        dependencies = {
 
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -138,51 +176,74 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
+
+
+            -- LSP status updates
+            { 'j-hui/fidget.nvim',                tag = 'legacy', opts = {} },
+            {
+                'folke/neodev.nvim',
+                config = function()
+                    require("neodev").setup()
+                end,
+            },
         }
-    }
+    },
+
+    -- Context
+    { "nvim-treesitter/nvim-treesitter-context" },
+
+    -- Gitsigns
+    { 'lewis6991/gitsigns.nvim' },
+
+    -- Lualine
+    {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require("plugins.lualine")
+        end,
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        }
+    },
+
+    {
+        'akinsho/bufferline.nvim',
+        version = "v3.*",
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        after = "catppuccin",
+        config = function()
+            require("plugins.bufferline")
+        end
+    },
+
+    {
+        'luochen1990/rainbow',
+        config = function()
+            vim.g.rainbow_active = 1
+        end
+    },
 
 
-    -- use { 'jose-elias-alvarez/null-ls.nvim' }
+    -- Terminal
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        config = function()
+            require("plugins.toggleterm")
+        end
+    },
+
+
+    { "github/copilot.vim" },
 
     -- use {
-    --     'f3fora/cmp-spell',
-    --     config = function() require("plugins.spellcheck") end,
-    --     requires = { { 'hrsh7th/nvim-cmp' } }
+    --     "kamykn/spelunker.vim",
+    --     config = function()
+    --         require("plugins.spell")
+    --     end
     -- }
 
-    use {
-        "kamykn/spelunker.vim",
-        config = function()
-            require("plugins.spell")
-        end
-    }
-
-    use {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-            require("plugins.theme")
-        end
-    }
+}
 
 
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("plugins.which_key")
-        end
-    }
-
-
-    use 'eandrju/cellular-automaton.nvim'
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-
-end)
-
+require("lazy").setup(plugins, opts)

@@ -64,6 +64,11 @@ vim.keymap.set("n", "<leader>pv", function()
     vim.cmd([[NvimTreeOpen]])
 end)
 
+vim.keymap.set(
+    "n", "<leader>cwd",
+    api.tree.change_root_to_parent,
+    { desc = "Change nvim-tree root to cwd" })
+
 vim.keymap.set("n", "<leader>m", function()
     api.tree.close()
 end)
@@ -71,7 +76,6 @@ end)
 
 
 local function open_nvim_tree(data)
-
     -- buffer is a directory
     local directory = vim.fn.isdirectory(data.file) == 1
 

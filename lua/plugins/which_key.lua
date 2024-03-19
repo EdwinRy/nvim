@@ -62,16 +62,6 @@ wk.setup({
 wk.register({
     w = {
         name = "window",
-        h = { "Move the cursor to the window on the left" },
-        j = { "Move the cursor to the window below" },
-        k = { "Move the cursor to the window above" },
-        l = { "Move the cursor to the window on the right" },
-
-        H = { "Move focused window to far left" },
-        J = { "Move focused window to the bottom" },
-        K = { "Move focused window to the top" },
-        L = { "Move focused window to far right" },
-
         v = { "Split window vertically" },
         s = { "Split window horizontally" },
     },
