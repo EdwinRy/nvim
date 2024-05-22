@@ -17,6 +17,7 @@ local plugins = {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.4',
         dependencies = { 'nvim-lua/plenary.nvim' },
+        cond = (function() return not vim.g.vscode end),
         config = function()
             require("plugins.telescope")
         end
@@ -28,6 +29,7 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
+        cond = (function() return not vim.g.vscode end),
         config = function()
             require("plugins.nvim_tree")
         end
@@ -58,7 +60,8 @@ local plugins = {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
             require("plugins.which_key")
-        end
+        end,
+        cond = (function() return not vim.g.vscode end)
     },
 
     -- Theme
@@ -67,6 +70,7 @@ local plugins = {
         lazy = false,
         name = "catppuccin",
         priority = 1000,
+        cond = (function() return not vim.g.vscode end),
         config = function()
             require("plugins.theme")
         end
@@ -75,6 +79,7 @@ local plugins = {
     -- Git
     {
         "kdheepak/lazygit.nvim",
+        cond = (function() return not vim.g.vscode end),
         -- optional for floating window border decoration
         -- dependencies = {
         --     "nvim-lua/plenary.nvim",
@@ -104,14 +109,16 @@ local plugins = {
 
     {
         "nmac427/guess-indent.nvim",
+        cond = (function() return not vim.g.vscode end),
         config = function()
-            require("guess-indent").setup{}
+            require("guess-indent").setup {}
         end,
     },
 
     -- Diagnostics display
     {
         "folke/trouble.nvim",
+        cond = (function() return not vim.g.vscode end),
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             -- your configuration comes here
@@ -123,6 +130,7 @@ local plugins = {
     -- Comment
     {
         'numToStr/Comment.nvim',
+        cond = (function() return not vim.g.vscode end),
         opts = {
             -- add any options here
         },
@@ -132,6 +140,7 @@ local plugins = {
     -- Autocomplete
     {
         'hrsh7th/nvim-cmp',
+        cond = (function() return not vim.g.vscode end),
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
             'L3MON4D3/LuaSnip',
@@ -147,14 +156,16 @@ local plugins = {
 
     {
         "windwp/nvim-autopairs",
+        cond = (function() return not vim.g.vscode end),
         config = function()
-            require("nvim-autopairs").setup{}
+            require("nvim-autopairs").setup {}
         end
     },
 
     -- LSP
     {
         'VonHeikemen/lsp-zero.nvim',
+        cond = (function() return not vim.g.vscode end),
         config = function()
             require("plugins.lsp")
         end,
@@ -190,14 +201,21 @@ local plugins = {
     },
 
     -- Context
-    { "nvim-treesitter/nvim-treesitter-context" },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        cond = (function() return not vim.g.vscode end),
+    },
 
     -- Gitsigns
-    { 'lewis6991/gitsigns.nvim' },
+    {
+        'lewis6991/gitsigns.nvim',
+        cond = (function() return not vim.g.vscode end),
+    },
 
     -- Lualine
     {
         'nvim-lualine/lualine.nvim',
+        cond = (function() return not vim.g.vscode end),
         config = function()
             require("plugins.lualine")
         end,
@@ -208,6 +226,7 @@ local plugins = {
 
     {
         'akinsho/bufferline.nvim',
+        cond = (function() return not vim.g.vscode end),
         version = "v3.*",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         after = "catppuccin",
@@ -218,6 +237,7 @@ local plugins = {
 
     {
         'luochen1990/rainbow',
+        cond = (function() return not vim.g.vscode end),
         config = function()
             vim.g.rainbow_active = 1
         end
@@ -227,6 +247,7 @@ local plugins = {
     -- Terminal
     {
         'akinsho/toggleterm.nvim',
+        cond = (function() return not vim.g.vscode end),
         version = "*",
         config = function()
             require("plugins.toggleterm")
@@ -234,7 +255,7 @@ local plugins = {
     },
 
 
-    { "github/copilot.vim" },
+    { "github/copilot.vim", cond = (function() return not vim.g.vscode end) },
 
     -- use {
     --     "kamykn/spelunker.vim",
