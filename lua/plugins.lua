@@ -227,7 +227,7 @@ local plugins = {
     {
         'akinsho/bufferline.nvim',
         cond = (function() return not vim.g.vscode end),
-        version = "v3.*",
+        version = "v4.6.1",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         after = "catppuccin",
         config = function()
