@@ -1,4 +1,3 @@
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -52,7 +51,6 @@ vim.o.smartcase = true
 vim.o.completeopt = 'menuone,noselect'
 
 
-
 -- highlight on yank
 -- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -62,15 +60,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
-
-
--- vim.g.do_filetype_lua = 1
-
--- vim.o.spellcapcheck = nil
--- vim.o.spelloptions = "camel"
--- vim.o.spelllang = 'en_gb'
--- vim.o.spell = true
--- vim.api.nvim_create_autocmd("BufEnter", { command = [[set spelloptions=camel]] })
--- vim.cmd("syn match ShortWords /\a\\{2,4}/ contains=@NoSpell")
 

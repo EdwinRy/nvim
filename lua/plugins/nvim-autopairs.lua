@@ -1,8 +1,7 @@
 return {
-    'akinsho/toggleterm.nvim',
+    "windwp/nvim-autopairs",
     cond = (function() return not vim.g.vscode end),
-    version = "*",
     config = function()
-        require("plugin-config.toggleterm")
+        require("nvim-autopairs").setup {}
     end
 }

@@ -1,8 +1,7 @@
 return {
-    'akinsho/toggleterm.nvim',
+    'luochen1990/rainbow',
     cond = (function() return not vim.g.vscode end),
-    version = "*",
     config = function()
-        require("plugin-config.toggleterm")
+        vim.g.rainbow_active = 1
     end
 }
