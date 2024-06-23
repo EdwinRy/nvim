@@ -26,7 +26,12 @@ local function config()
 
 
     require("nvim-tree").setup({
-        on_attach = on_attach
+        on_attach = on_attach,
+        filters = {
+            dotfiles = false,
+            git_ignored = false,
+            custom = { "node_modules", ".git" },
+        },
     })
 
     local api = require("nvim-tree.api")
@@ -59,5 +64,6 @@ return {
     },
     cond = (function() return not vim.g.vscode end),
     config = config,
+    lazy=false
 }
 

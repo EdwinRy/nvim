@@ -28,6 +28,7 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s<C-w>j", { desc = "Split window horizon
 
 -- BUFFERS
 vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>", { desc = "Delete buffer", silent = true })
+vim.keymap.set("n", "<leader>cab", ":bufdo bd<CR>", { desc = "Delete buffer", silent = true })
 vim.keymap.set("n", "<leader>z", ":bd<CR>", { desc = "Close buffer", silent = true })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete buffer", silent = true })
 
