@@ -28,12 +28,13 @@ local function config()
     }
     require("telescope").load_extension "session-lens"
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>fd', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>fd', builtin.find_files, { desc = "Search files by name with telescope"})
     vim.keymap.set('n', '<leader>fu', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,-u<CR>", {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    vim.keymap.set('n', '<leader>ft', builtin.git_files, {})
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Search for file content with telescope"})
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Search buffers with telescope" })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Search help tags with telescope" })
+    vim.keymap.set('n', '<leader>ft', builtin.git_files, { desc = "Search git files with telescope" })
+
     -- vim.keymap.set('n', '<leader>fs', function()
     --     builtin.grep_string({ search = vim.fn.input("Grep > ") });
     -- end)
@@ -42,10 +43,18 @@ local function config()
     vim.keymap.set("n", "<leader>fr", "<cmd>Telescope undo<cr>")
 
 
-    vim.keymap.set('n', '<leader>fl', builtin.oldfiles, {})
-    vim.keymap.set('n', '<leader>fi', builtin.lsp_incoming_calls, {})
-    vim.keymap.set('n', '<leader>fo', builtin.lsp_outgoing_calls, {})
-    vim.keymap.set('n', '<leader>fp', builtin.diagnostics, {})
+    vim.keymap.set('n', '<leader>fl', builtin.oldfiles, { desc = "Search old files" })
+    vim.keymap.set('n', '<leader>fi', builtin.lsp_incoming_calls, { desc = "List incoming calls with telescope" })
+    vim.keymap.set('n', '<leader>fo', builtin.lsp_outgoing_calls, { desc = "List outgoing calls with telescope" })
+    vim.keymap.set('n', '<leader>fp', builtin.diagnostics, { desc = "List diagnostics with telescope" })
+
+
+    vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "List references with telescope" })
+    vim.keymap.set('n', '<leader>fm', builtin.lsp_implementations, { desc = "List implementations with telescope" })
+    vim.keymap.set('n', '<leader>fe', builtin.lsp_definitions, { desc = "List definitions with telescope"})
+    vim.keymap.set('n', '<leader>fy', builtin.lsp_type_definitions, { desc = "List type definitions with telescope" })
+
+
 end
 
 

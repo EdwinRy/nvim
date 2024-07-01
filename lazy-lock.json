@@ -36,6 +36,7 @@
   "telescope.nvim": { "branch": "master", "commit": "7011eaae0ac1afe036e30c95cf80200b8dc3f21a" },
   "toggleterm.nvim": { "branch": "main", "commit": "066cccf48a43553a80a210eb3be89a15d789d6e6" },
   "trouble.nvim": { "branch": "main", "commit": "a0227dcbd2f4c817b5aaa540062e5522b7801b39" },
+  "vim-css-color": { "branch": "master", "commit": "950e80352b325ff26d3b0faf95b29e301c200f7d" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "which-key.nvim": { "branch": "main", "commit": "4b7167f8fb2dba3d01980735e3509e172c024c29" }
 }
