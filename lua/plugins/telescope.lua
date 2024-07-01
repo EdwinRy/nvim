@@ -54,7 +54,7 @@ local function config()
     vim.keymap.set('n', '<leader>fe', builtin.lsp_definitions, { desc = "List definitions with telescope"})
     vim.keymap.set('n', '<leader>fy', builtin.lsp_type_definitions, { desc = "List type definitions with telescope" })
 
-
+    vim.keymap.set('n', '<leader>fw', builtin.treesitter, { desc = "List type definitions with telescope" })
 end
 
 
