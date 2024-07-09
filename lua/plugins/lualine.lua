@@ -10,7 +10,7 @@ return {
                 },
                 -- globalstatus = true,
                 show_filename_only = false,
-                path = 4,
+                path = 1,
             },
         }
     end,

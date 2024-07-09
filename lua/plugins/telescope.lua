@@ -21,6 +21,7 @@ local function config()
                         require("telescope.builtin")
                             .resume()
                     end,
+                    ["<C-k>"] = require("telescope.actions").delete_buffer,
                 },
                 n = {
 
