@@ -32,6 +32,24 @@ local function config()
             git_ignored = false,
             custom = { "node_modules", ".git" },
         },
+        actions = {
+            change_dir = {
+                global = true,
+            },
+        },
+        view = {
+            width = {
+                min = 30,
+                max = 60,
+            },
+            -- side = "left",
+            adaptive_size = true,
+        },
+        renderer = {
+            indent_markers = {
+                enable = true,
+            }
+        }
     })
 
     local api = require("nvim-tree.api")
@@ -64,6 +82,5 @@ return {
     },
     cond = (function() return not vim.g.vscode end),
     config = config,
-    lazy=false
+    lazy = false
 }
-
