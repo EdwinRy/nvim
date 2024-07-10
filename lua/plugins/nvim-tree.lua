@@ -49,6 +49,11 @@ local function config()
             indent_markers = {
                 enable = true,
             }
+        },
+        ui = {
+            confirm = {
+                default_yes = true,
+            }
         }
     })
 
