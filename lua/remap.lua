@@ -56,6 +56,8 @@ vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { desc = "Open lazygit" })
 
 -- CONFIG
 
+vim.keymap.set("n", "<leader>rn", ":set rnu!<CR>", { desc = "Toggle relative numbers" })
+
 vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>cp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/plugins.lua<CR>");
