@@ -30,7 +30,12 @@ local function config()
         filters = {
             dotfiles = false,
             git_ignored = false,
-            custom = { "node_modules", ".git" },
+            custom = {
+                "node_modules",
+                ".terraform",
+                ".terragrunt-cache",
+                ".git"
+            },
         },
         actions = {
             change_dir = {
