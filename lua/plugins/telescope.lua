@@ -21,7 +21,7 @@ local function config()
                         require("telescope.builtin")
                             .resume()
                     end,
-                    ["<C-k>"] = require("telescope.actions").delete_buffer,
+                    ["<C-k>"] = require("telescope.actions").delete_buffer
                 },
                 n = {
 
@@ -46,7 +46,7 @@ local function config()
     vim.keymap.set('n', '<leader>fu', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,-u<CR>", {})
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Search for file content with telescope" })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Search buffers with telescope" })
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Search help tags with telescope" })
+    vim.keymap.set('n', '<leader>f?', builtin.help_tags, { desc = "Search help tags with telescope" })
     vim.keymap.set('n', '<leader>ft', builtin.git_files, { desc = "Search git files with telescope" })
 
 
@@ -61,8 +61,9 @@ local function config()
     vim.keymap.set('n', '<leader>fe', builtin.lsp_definitions, { desc = "List definitions with telescope" })
     vim.keymap.set('n', '<leader>fy', builtin.lsp_type_definitions, { desc = "List type definitions with telescope" })
 
-    vim.keymap.set('n', '<leader>fw', builtin.treesitter, { desc = "List type definitions with telescope" })
-    vim.keymap.set('n', '<leader>fa', builtin.lsp_workspace_symbols, { desc = "List type definitions with telescope" })
+    vim.keymap.set('n', '<leader>fw', builtin.treesitter, { desc = "List treesitter symbols with telescope" })
+    vim.keymap.set('n', '<leader>fa', builtin.lsp_workspace_symbols, { desc = "List workspace symbols with telescope" })
+    vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
 
     vim.keymap.set('v', '<leader>fv', function()
         builtin.live_grep({ default_text = getVisualSelection() })
@@ -70,8 +71,7 @@ local function config()
 
 
     require("telescope").load_extension "undo"
-    vim.keymap.set("n", "<leader>fr", "<cmd>Telescope undo<cr>")
-
+    vim.keymap.set("n", "<leader>fh", "<cmd>Telescope undo<cr>")
 end
 
 
