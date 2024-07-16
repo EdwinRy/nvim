@@ -123,3 +123,13 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.api.nvim_set_keymap("i", "<C-/>", "copilot#Accept(\"<CR>\")", { expr = true, silent = true })
+
+
+vim.api.nvim_create_user_command('Q', 'q', {})
+vim.api.nvim_create_user_command('Qa', 'qa', {})
+
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('Wa', 'wa', {})
+vim.api.nvim_create_user_command('Wq', 'wq', {})
+vim.api.nvim_create_user_command('Waq', 'waq', {})
+vim.api.nvim_create_user_command('Wqa', 'wqa', {})
