@@ -105,3 +105,4 @@ end
 
 -- rose_pine()
 cattpuccin(false)
+-- cattpuccin(true)

@@ -7,15 +7,40 @@ vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Move the cursor to the win
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Move the cursor to the window above" })
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Move the cursor to the window on the right" })
 
-vim.keymap.set("n", "˙", "<C-w>h")
-vim.keymap.set("n", "∆", "<C-w>j")
-vim.keymap.set("n", "˚", "<C-w>k")
-vim.keymap.set("n", "¬", "<C-w>l")
+vim.keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move the cursor to the window on the left" })
+vim.keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move the cursor to the window below" })
+vim.keymap.set("n", "<M-k>", "<C-w>k", { desc = "Move the cursor to the window above" })
+vim.keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move the cursor to the window on the right" })
+
+
+local resizeFactor = 15
+local resizeFactorBig = 30
+
+-- window resizing
+vim.keymap.set("n", "<M-L>", "<C-w>" .. resizeFactor .. ">", { desc = "Increase window width" })
+vim.keymap.set("n", "<M-H>", "<C-w>" .. resizeFactor .. "<", { desc = "Decrease window width" })
+vim.keymap.set("n", "<M-J>", "<C-w>" .. resizeFactor .. "+", { desc = "Increase window height" })
+vim.keymap.set("n", "<M-K>", "<C-w>" .. resizeFactor .. "-", { desc = "Decrease window height" })
+
+vim.keymap.set("n", "<M-C-L>", "<C-w>" .. resizeFactorBig .. ">", { desc = "Big increase window width" })
+vim.keymap.set("n", "<M-C-H>", "<C-w>" .. resizeFactorBig .. "<", { desc = "Big decrease window width" })
+vim.keymap.set("n", "<M-C-J>", "<C-w>" .. resizeFactorBig .. "+", { desc = "Big increase window height" })
+vim.keymap.set("n", "<M-C-K>", "<C-w>" .. resizeFactorBig .. "-", { desc = "Big decrease window height" })
+
+vim.keymap.set("n", "<M-+>", "<C-w>=", { desc = "Equalize window sizes" })
+
+-- vim.keymap.set("n", "˙", "<C-w>h")
+-- vim.keymap.set("n", "∆", "<C-w>j")
+-- vim.keymap.set("n", "˚", "<C-w>k")
+-- vim.keymap.set("n", "¬", "<C-w>l")
 
 vim.keymap.set("n", "<leader>wH", "<C-w>H", { desc = "Move focused window to far left" })
 vim.keymap.set("n", "<leader>wJ", "<C-w>J", { desc = "Move focused window to the bottom" })
 vim.keymap.set("n", "<leader>wK", "<C-w>K", { desc = "Move focused window to the top" })
 vim.keymap.set("n", "<leader>wL", "<C-w>L", { desc = "Move focused window to the far right" })
+
+vim.keymap.set("n", "<leader>wr", "<C-w>r", { desc = "Rotate windows" })
+vim.keymap.set("n", "<leader>wR", "<C-w>R", { desc = "Rotate windows the other way" })
 
 vim.keymap.set("n", "<C-Right>", "<C-w>H")
 vim.keymap.set("n", "<C-Down>", "<C-w>J")

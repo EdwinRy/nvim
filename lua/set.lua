@@ -50,6 +50,12 @@ vim.o.smartcase = true
 
 vim.o.completeopt = 'menuone,noselect'
 
+-- already shown in status line
+vim.o.showmode = false
+
+-- use system clipboard
+vim.o.clipboard = 'unnamedplus'
+
 
 -- highlight on yank
 -- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
