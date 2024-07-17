@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Move the cursor to the win
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Move the cursor to the window below" })
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Move the cursor to the window above" })
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Move the cursor to the window on the right" })
+vim.keymap.set("n", "<leader>wo", "<C-w>l", { desc = "Close all windows apart from current" })
 
 vim.keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move the cursor to the window on the left" })
 vim.keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move the cursor to the window below" })
