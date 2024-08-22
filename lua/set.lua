@@ -22,7 +22,7 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
--- vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -54,7 +54,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.showmode = false
 
 -- use system clipboard
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 
 
 -- highlight on yank

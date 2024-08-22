@@ -13,6 +13,11 @@ vim.keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move the cursor to the window b
 vim.keymap.set("n", "<M-k>", "<C-w>k", { desc = "Move the cursor to the window above" })
 vim.keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move the cursor to the window on the right" })
 
+vim.keymap.set("n", "<M-Left>", "<C-w>h", { desc = "Move the cursor to the window on the left" })
+vim.keymap.set("n", "<M-Down>", "<C-w>j", { desc = "Move the cursor to the window below" })
+vim.keymap.set("n", "<M-Up>", "<C-w>k", { desc = "Move the cursor to the window above" })
+vim.keymap.set("n", "<M-Right>", "<C-w>l", { desc = "Move the cursor to the window on the right" })
+
 
 local resizeFactor = 15
 local resizeFactorBig = 30

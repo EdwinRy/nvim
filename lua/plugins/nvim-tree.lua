@@ -31,10 +31,10 @@ local function config()
             dotfiles = false,
             git_ignored = false,
             custom = {
-                "node_modules",
-                ".terraform",
-                ".terragrunt-cache",
-                ".git"
+                "^node_modules$",
+                "^.terraform",
+                "^.terragrunt-cache",
+                "^.git$"
             },
         },
         actions = {
