@@ -1,4 +1,4 @@
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "buffers,curdir,folds"
 
 return {
     "rmagatti/auto-session",
@@ -24,5 +24,6 @@ return {
             noremap = true, desc = "Search sessions"
         })
         vim.keymap.set("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Delete session", silent = false })
+        vim.keymap.set("n", "<leader>ss", ":SessionSave<CR>", { desc = "Save session", silent = false })
     end
 }

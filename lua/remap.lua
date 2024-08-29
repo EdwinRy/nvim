@@ -67,6 +67,15 @@ if not Bufferline_loaded then
 end
 
 
+-- TABS
+vim.keymap.set("n", "<leader>tn", ":tabnew<CR>", { desc = "New tab", silent = true })
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close tab", silent = true })
+vim.keymap.set("n", "<leader>t[", ":tabprev<CR>", { desc = "Previous tab", silent = true })
+vim.keymap.set("n", "<leader>t]", ":tabnext<CR>", { desc = "Next tab", silent = true })
+
+vim.keymap.set("n", "<C-M-[>", ":tabprev<CR>", { desc = "Previous tab", silent = true })
+vim.keymap.set("n", "<C-M-]>", ":tabnext<CR>", { desc = "Next tab", silent = true })
+
 
 
 -- MOVE HIGHLIGHT

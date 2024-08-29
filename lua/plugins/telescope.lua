@@ -69,8 +69,8 @@ local function config()
     vim.keymap.set('n', '<leader>fd', builtin.lsp_definitions, { desc = "List definitions" })
     vim.keymap.set('n', '<leader>ft', builtin.lsp_type_definitions, { desc = "List type definitions" })
 
-    vim.keymap.set('n', '<leader>fs', builtin.treesitter, { desc = "List treesitter symbols" })
-    vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "List workspace symbols" })
+    -- vim.keymap.set('n', '<leader>fs', builtin.treesitter, { desc = "List treesitter symbols" })
+    -- vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "List workspace symbols" })
     vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
 
     vim.keymap.set('v', '<leader>fv', function()
