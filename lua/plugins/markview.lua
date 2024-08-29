@@ -2,6 +2,10 @@ return {
     'OXY2DEV/markview.nvim',
     cond = (function() return not vim.g.vscode end),
     config = function()
+        require("markview").setup({
+            filetypes = { "markdown", "octo", "quarto", "rmd" },
+            buf_ignore = { },
+        })
         vim.keymap.set("n", "<leader>vm", ":Markview<CR>", { desc = "Toggle markdown preview", silent = true })
     end,
     dependencies = {
@@ -12,7 +16,6 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
 }
-
 
 -- return {
 --     'MeanderingProgrammer/markdown.nvim',

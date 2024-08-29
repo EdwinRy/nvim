@@ -12,7 +12,7 @@ local lsp_zero = require("lsp-zero")
 -- })
 
 
-lsp_zero.preset("recommended")
+-- lsp_zero.preset("recommended")
 -- lsp.ensure_installed({
 --     'tsserver',
 --     -- 'sumneko_lua',
@@ -74,15 +74,15 @@ end, { nargs = 0, })
 vim.keymap.set('n', '<leader>cp', '<cmd>CopilotToggle<cr>', { noremap = true })
 
 
-lsp_zero.set_preferences({
-    -- suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
-})
+-- lsp_zero.set_preferences({
+--     -- suggest_lsp_servers = false,
+--     sign_icons = {
+--         error = 'E',
+--         warn = 'W',
+--         hint = 'H',
+--         info = 'I'
+--     }
+-- })
 
 lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format buffer", buffer = bufnr, remap = false })
@@ -90,7 +90,7 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "Got to implementation", buffer = bufnr, remap = false })
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information", buffer = bufnr, remap = false })
     vim.keymap.set("n", "<leader>ls", vim.lsp.buf.workspace_symbol, { desc = "Workspace symbol", buffer = bufnr, remap = false })
-    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float", buffer = bufnr, remap = false })
+    -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float", buffer = bufnr, remap = false })
     vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic error", buffer = bufnr, remap = false })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic error", buffer = bufnr, remap = false })
     vim.keymap.set("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Trigger code actions", buffer = bufnr, remap = false })
@@ -105,18 +105,4 @@ vim.diagnostic.config({
     virtual_text = true,
 })
 
-require('mason').setup({})
-local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup({
-    ensure_installed = { "lua_ls" },
-    automatic_installation = true,
-    handlers = {
-        lsp_zero.default_setup,
-    },
-})
-
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        require('lspconfig')[server_name].setup {}
-    end,
-}
+-- require('mason').setup({})

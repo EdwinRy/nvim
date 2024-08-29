@@ -35,11 +35,6 @@ vim.keymap.set("n", "<M-C-K>", "<C-w>" .. resizeFactorBig .. "-", { desc = "Big 
 
 vim.keymap.set("n", "<M-+>", "<C-w>=", { desc = "Equalize window sizes" })
 
--- vim.keymap.set("n", "˙", "<C-w>h")
--- vim.keymap.set("n", "∆", "<C-w>j")
--- vim.keymap.set("n", "˚", "<C-w>k")
--- vim.keymap.set("n", "¬", "<C-w>l")
-
 vim.keymap.set("n", "<leader>wH", "<C-w>H", { desc = "Move focused window to far left" })
 vim.keymap.set("n", "<leader>wJ", "<C-w>J", { desc = "Move focused window to the bottom" })
 vim.keymap.set("n", "<leader>wK", "<C-w>K", { desc = "Move focused window to the top" })
@@ -58,20 +53,20 @@ vim.keymap.set("n", "<leader>ws", "<C-w>s<C-w>j", { desc = "Split window horizon
 
 
 -- BUFFERS
-vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>", { desc = "Delete buffer", silent = true })
-vim.keymap.set("n", "<leader>cab", ":bufdo bd<CR>", { desc = "Delete buffer", silent = true })
-vim.keymap.set("n", "<leader>z", ":bd<CR>", { desc = "Close buffer", silent = true })
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete buffer", silent = true })
+vim.keymap.set("n", "<leader>x", ":bp<bar>vs<bar>bn<bar>bd<CR>", { desc = "Delete current buffer", silent = true })
+vim.keymap.set("n", "<leader>ba", ":bufdo bd<CR>", { desc = "Delete all buffers", silent = true })
+vim.keymap.set("n", "<leader>z", ":bd<CR>", { desc = "Close buffer and pane", silent = true })
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer and pane", silent = true })
 
 if not Bufferline_loaded then
-  vim.keymap.set("n", "<leader>]", ":bn<CR>", { desc = "Next buffer", silent = true })
-  vim.keymap.set("n", "<leader>[", ":bp<CR>", { desc = "Previous buffer", silent = true })
+  vim.keymap.set("n", "<leader>]", ":bn<CR>", { desc = "Open next buffer", silent = true })
+  vim.keymap.set("n", "<leader>[", ":bp<CR>", { desc = "Open previous buffer", silent = true })
 
-  vim.keymap.set("n", "<M-]>", ":bn<CR>", { desc = "Next buffer", silent = true })
-  vim.keymap.set("n", "<M-[>", ":bp<CR>", { desc = "Previous buffer", silent = true })
+  vim.keymap.set("n", "<M-]>", ":bn<CR>", { desc = "Open next buffer", silent = true })
+  vim.keymap.set("n", "<M-[>", ":bp<CR>", { desc = "Open previous buffer", silent = true })
 end
 
-vim.keymap.set("n", "<leader>sw", ":set sw=")
+
 
 
 -- MOVE HIGHLIGHT
@@ -79,63 +74,68 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted text dow
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted text up" })
 
 
--- NAVIGATION
--- vim.keymap.set("n", "<leader>t", "zt")
-
--- PLUGINS
-vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { desc = "Open lazygit" })
-
 -- CONFIG
 
-vim.keymap.set("n", "<leader>rn", ":set rnu!<CR>", { desc = "Toggle relative numbers" })
+vim.keymap.set("n", "<leader>cr", ":set rnu!<CR>", { desc = "Toggle relative numbers" })
+vim.keymap.set("n", "<leader>ct", function()
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
+end, { desc = "Toggle theme" })
+vim.keymap.set("n", "<leader>cs", ":set sw=", { desc = "Set spaces to..." })
 
-vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")
-vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<CR>")
-vim.keymap.set("n", "<leader>cp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/plugins.lua<CR>");
+
+
+
 
 -- EDITING
 
-vim.keymap.set("n", "J", "mzJ`z")
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Move line below to end of this line" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Center next search result" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Center previous search result" })
 
 vim.keymap.set("x", "<leader>sr", ":s/\\(\\s*\\)\\(.*\\)/\\1\\2<LEFT><LEFT>")
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy line to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Cut to clipboard" })
 
--- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
--- This is going to get me cancelled
--- vim.keymap.set("i", "<C-c>", "<Esc>")
-
-vim.keymap.set("n", "Q", "<nop>")
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format)
-
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
---vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
-vim.api.nvim_set_keymap("i", "<C-/>", "copilot#Accept(\"<CR>\")", { expr = true, silent = true })
-
+-- extra user commands
 
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
-
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Wa', 'wa', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Waq', 'waq', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
+
+
+
+
+-- Other
+vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { desc = "Make current file executable", silent = true })
+vim.api.nvim_set_keymap("i", "<C-/>", "copilot#Accept(\"<CR>\")", { expr = true, silent = true })
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename symbol" })
+
+vim.keymap.set("n", "Q", "<nop>")
+
+
+
+
+
+-- legacy
+
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+
+-- vim.keymap.set("n", "<leader>cr", ":so $MYVIMRC<CR>")
+-- vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<CR>")
+-- vim.keymap.set("n", "<leader>cp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/plugins.lua<CR>");

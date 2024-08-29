@@ -19,7 +19,7 @@ require("toggleterm").setup({
 --
 -- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 --
-vim.keymap.set("n", "<leader>t", ":ToggleTerm ")
+-- vim.keymap.set("n", "<leader>t", ":ToggleTerm ")
 
 
 

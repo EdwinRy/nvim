@@ -24,73 +24,48 @@ local function config()
         },
         -- add operators that will trigger motion and text object completion
         -- to enable all native operators, set the preset / operators plugin above
-        operators = { gc = "Comments" },
-        popup_mappings = {
-            scroll_down = '<c-d>', -- binding to scroll down inside the popup
-            scroll_up = '<c-u>',   -- binding to scroll up inside the popup
-        },
-        window = {
-            -- border = "none", -- none, single, double, shadow
-            position = "bottom",      -- bottom, top
-            margin = { 2, 5, 0, 5 },  -- extra window margin [top, right, bottom, left]
-            padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-            winblend = 1
-        },
         layout = {
-            height = { min = 4, max = 25 },                                           -- min and max height of the columns
-            width = { min = 20, max = 50 },                                           -- min and max width of the columns
-            spacing = 3,                                                              -- spacing between columns
-            align = "left",                                                           -- align columns left, center or right
+            height = { min = 4, max = 25 }, -- min and max height of the columns
+            width = { min = 20, max = 50 }, -- min and max width of the columns
+            spacing = 3,                    -- spacing between columns
+            align = "left",                 -- align columns left, center or right
         },
-        hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-        show_help = true,                                                             -- show help message on the command line when the popup is visible
-        show_keys = true,                                                             -- show the currently pressed key and its label as a message in the command line
-        triggers = "auto",                                                            -- automatically setup triggers
-        -- triggers = {"<leader>"} -- or specify a list manually
-        triggers_blacklist = {
-            -- list of mode / prefixes that should never be hooked by WhichKey
-            -- this is mostly relevant for key maps that start with a native binding
-            -- most people should not need to change this
-            i = { "j", "k" },
-            v = { "j", "k" },
-        },
-        -- disable the WhichKey popup for certain buf types and file types.
-        -- Disabled by deafult for Telescope
+        show_help = true,                   -- show help message on the command line when the popup is visible
+        show_keys = true,                   -- show the currently pressed key and its label as a message in the command line
         disable = {
             buftypes = {},
             filetypes = { "TelescopePrompt" },
         },
+        -- expand = 2,
+        expand = function(node)
+            return not node.desc -- expand all nodes without a description
+        end,
     })
 
-    wk.register({
-        w = {
-            name = "window",
-            v = { "Split window vertically" },
-            s = { "Split window horizontally" },
-        },
-        x = { "Delete buffer without closing split window" },
-        z = { "Delete buffer" },
-        ["]"] = { "Go to next buffer" },
-        ["["] = { "Go to previous buffer" },
-        ["sw"] = { "Enter set spaces command" },
-        ["gl"] = { "Open LazyGit" },
-
-        c = {
-            name = "Config options",
-            r = "Restart config",
-            e = "Open config file",
-            p = "Open plugins file"
-        },
-        p = { "Paste over selection" },
-        f = { "Format file" },
-        s = { "Rename symbol" }
-
-    }, { prefix = "<leader>" })
+    wk.add(
+        {
+            { "<leader>w", group = "Window pane controls" },
+            { "<leader>g", group = "Games" },
+            { "<leader>o", group = "Octo.nvim" },
+            { "<leader>b", group = "Buffer operations" },
+            { "<leader>e", group = "File operations" },
+            { "<leader>l", group = "LSP" },
+            { "<leader>f", group = "Telescope search" },
+            { "<leader>0", group = "Launch plugins" },
+            { "<leader>c", group = "Editor config" },
+            { "<leader>v", group = "View options" },
+        }
+    )
 end
 
 return
 {
     "folke/which-key.nvim",
+    priority = 20,
     config = config,
+    dependencies = {
+        "echasnovski/mini.icons",
+        "nvim-tree/nvim-web-devicons",
+    },
     cond = (function() return not vim.g.vscode end)
 }
