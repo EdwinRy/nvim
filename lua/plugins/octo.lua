@@ -60,7 +60,7 @@ return {
             merge_pr = { lhs = "<leader>opm", desc = "merge commit PR" },
             squash_and_merge_pr = { lhs = "<leader>opsm", desc = "squash and merge PR" },
             rebase_and_merge_pr = { lhs = "<leader>oprm", desc = "rebase and merge PR" },
-            list_commits = { lhs = "<leader>opc", desc = "list PR commits" },
+            list_commits = { lhs = "<leader>opcc", desc = "list PR commits" },
             list_changed_files = { lhs = "<leader>opf", desc = "list PR changed files" },
             show_pr_diff = { lhs = "<leader>opd", desc = "show PR diff" },
             add_reviewer = { lhs = "<leader>ova", desc = "add reviewer" },
@@ -121,12 +121,12 @@ return {
             close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
           },
           review_diff = {
-            submit_review = { lhs = "<leader>vs", desc = "submit review" },
-            discard_review = { lhs = "<leader>vd", desc = "discard review" },
+            submit_review = { lhs = "<leader>ovs", desc = "submit review" },
+            discard_review = { lhs = "<leader>ovd", desc = "discard review" },
             add_review_comment = { lhs = "<leader>oca", desc = "add a new review comment" },
             add_review_suggestion = { lhs = "<leader>osa", desc = "add a new review suggestion" },
-            focus_files = { lhs = "<leader>e", desc = "move focus to changed file panel" },
-            toggle_files = { lhs = "<leader>b", desc = "hide/show changed files panel" },
+            focus_files = { lhs = "<leader>oe", desc = "move focus to changed file panel" },
+            toggle_files = { lhs = "<leader>ob", desc = "hide/show changed files panel" },
             next_thread = { lhs = "]t", desc = "move to next thread" },
             prev_thread = { lhs = "[t", desc = "move to previous thread" },
             select_next_entry = { lhs = "]q", desc = "move to next changed file" },
@@ -138,20 +138,20 @@ return {
             goto_file = { lhs = "gf", desc = "go to file" },
           },
           file_panel = {
-            submit_review = { lhs = "<leader>vs", desc = "submit review" },
-            discard_review = { lhs = "<leader>vd", desc = "discard review" },
+            submit_review = { lhs = "<leader>ovs", desc = "submit review" },
+            discard_review = { lhs = "<leader>ovd", desc = "discard review" },
             next_entry = { lhs = "j", desc = "move to next changed file" },
             prev_entry = { lhs = "k", desc = "move to previous changed file" },
             select_entry = { lhs = "<cr>", desc = "show selected changed file diffs" },
             refresh_files = { lhs = "R", desc = "refresh changed files panel" },
-            focus_files = { lhs = "<leader>e", desc = "move focus to changed file panel" },
-            toggle_files = { lhs = "<leader>b", desc = "hide/show changed files panel" },
+            focus_files = { lhs = "<leader>oe", desc = "move focus to changed file panel" },
+            toggle_files = { lhs = "<leader>ob", desc = "hide/show changed files panel" },
             select_next_entry = { lhs = "]q", desc = "move to next changed file" },
             select_prev_entry = { lhs = "[q", desc = "move to previous changed file" },
             select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
             select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
             close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
-            toggle_viewed = { lhs = "<leader>vv", desc = "toggle viewer viewed state" },
+            toggle_viewed = { lhs = "<leader>ovv", desc = "toggle viewer viewed state" },
           },
         }
       }
@@ -173,7 +173,9 @@ return {
     require('which-key').add(wkMappings)
 
     vim.keymap.set("n", "<leader>opl", ":Octo pr list<CR>", { desc = "List pull requests", silent = true })
-    vim.keymap.set("n", "<leader>ops", ":Octo pr search<CR>", { desc = "Search pull requests", silent = true })
-    vim.keymap.set("n", "<leader>opc", ":Octo pr close<CR>", { desc = "Close pull request", silent = true })
+    vim.keymap.set("n", "<leader>opse", ":Octo pr search<CR>", { desc = "Search pull requests", silent = true })
+    vim.keymap.set("n", "<leader>opcl", ":Octo pr close<CR>", { desc = "Close pull request", silent = true })
+    vim.keymap.set("n", "<leader>oprl", ":Octo pr reload<CR>", { desc = "Reload PR", silent = true })
+    vim.keymap.set("n", "<leader>ordi", ":Octo review close<CR>", { desc = "Discard review", silent = true })
   end
 }
