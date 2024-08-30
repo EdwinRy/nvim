@@ -148,9 +148,6 @@ vim.keymap.set(
     "<cmd>!chmod +x %<CR>",
     { desc = "Make current file executable", silent = true }
 )
-vim.api.nvim_set_keymap("i", "<C-/>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename symbol" })
-
 vim.keymap.set("n", "Q", "<nop>")
 
 -- legacy

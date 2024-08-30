@@ -24,6 +24,6 @@ return {
             noremap = true, desc = "Search sessions"
         })
         vim.keymap.set("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Delete session", silent = false })
-        vim.keymap.set("n", "<leader>ss", ":SessionSave<CR>", { desc = "Save session", silent = false })
+        vim.keymap.set("n", "<leader>sv", ":SessionSave<CR>", { desc = "Save session", silent = false })
     end
 }

@@ -50,7 +50,7 @@ vim.o.smartcase = true
 
 vim.o.completeopt = "menuone,noselect"
 
--- already shown in status line
+-- editing mode already shown in status line
 vim.o.showmode = false
 
 -- use system clipboard

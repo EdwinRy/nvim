@@ -1,14 +1,5 @@
 local lsp_zero = require("lsp-zero")
 
--- local formatters = require "vim.lsp.null-ls.formatters"
--- formatters.setup {
---   {
---     command = "prettierd",
---     filetype = { "typescript", "typescriptreact", "jsonc" }
---   }
--- }
---
-
 lsp_zero.configure("lua_ls", {
     settings = {
         Lua = {
@@ -21,7 +12,19 @@ lsp_zero.configure("lua_ls", {
 
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local lspkind = require("lspkind")
+
 cmp.setup({
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = "symbol", -- show only symbol annotations
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            -- can also be a function to dynamically calculate max width such as
+            -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+            ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+        }),
+    },
     mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
         ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -32,12 +35,22 @@ cmp.setup({
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
     }),
+    sources = {
+        { name = "path" },
+        { name = "nvim_lsp", keyword_length = 1 },
+        { name = "buffer", keyword_length = 3 },
+        { name = "luasnip", keyword_length = 2 },
+    },
 })
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- disable completion with tab
 -- this helps with copilot setup
 -- cmp_mappings['<Tab>'] = nil
 -- cmp_mappings['<S-Tab>'] = nil
-vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("")')
+-- vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("")')
+vim.api.nvim_set_keymap("i", "<C-/>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+
 vim.cmd("let g:copilot_no_tab_map = v:true")
 
 vim.api.nvim_create_user_command("CopilotToggle", function()
