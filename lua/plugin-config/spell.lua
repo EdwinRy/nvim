@@ -1,4 +1,3 @@
-
 -- vim.o.spell = false
 
 -- Enable spelunker.vim. (default: 1)

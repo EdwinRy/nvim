@@ -1,16 +1,18 @@
 return {
-    'lewis6991/gitsigns.nvim',
-    cond = (function() return not vim.g.vscode end),
+    "lewis6991/gitsigns.nvim",
+    cond = function()
+        return not vim.g.vscode
+    end,
     config = function()
-        require('gitsigns').setup({
+        require("gitsigns").setup({
             current_line_blame = true,
             current_line_blame_opts = {
                 virt_text = true,
-                virt_text_pos = 'eol',
+                virt_text_pos = "eol",
                 delay = 100,
             },
             on_attach = function(bufnr)
-                local gitsigns = require('gitsigns')
+                local gitsigns = require("gitsigns")
 
                 local function map(mode, l, r, opts)
                     opts = opts or {}
@@ -19,21 +21,21 @@ return {
                 end
 
                 -- Navigation
-                map('n', ']c', function()
+                map("n", "]c", function()
                     if vim.wo.diff then
-                        vim.cmd.normal({ ']c', bang = true })
+                        vim.cmd.normal({ "]c", bang = true })
                     else
-                        gitsigns.nav_hunk('next')
+                        gitsigns.nav_hunk("next")
                     end
-                end, {desc = 'Next git change'})
+                end, { desc = "Next git change" })
 
-                map('n', '[c', function()
+                map("n", "[c", function()
                     if vim.wo.diff then
-                        vim.cmd.normal({ '[c', bang = true })
+                        vim.cmd.normal({ "[c", bang = true })
                     else
-                        gitsigns.nav_hunk('prev')
+                        gitsigns.nav_hunk("prev")
                     end
-                end, {desc = 'Previous git change'})
+                end, { desc = "Previous git change" })
 
                 -- Actions
                 -- map('n', '<leader>hs', gitsigns.stage_hunk, {desc = 'Stage hunk'})
@@ -52,7 +54,7 @@ return {
                 --
                 -- -- Text object
                 -- map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-            end
+            end,
         })
-    end
+    end,
 }

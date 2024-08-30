@@ -1,9 +1,8 @@
-
 require("toggleterm").setup({
-  size = 25,
-  open_mapping = [[<c-\>]],
-  autochdir = true,
-  start_in_insert = true,
+    size = 25,
+    open_mapping = [[<c-\>]],
+    autochdir = true,
+    start_in_insert = true,
 })
 
 -- function _G.set_terminal_keymaps()
@@ -20,6 +19,3 @@ require("toggleterm").setup({
 -- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 --
 -- vim.keymap.set("n", "<leader>t", ":ToggleTerm ")
-
-
-

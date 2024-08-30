@@ -43,12 +43,12 @@ vim.opt.listchars:append({
 })
 vim.opt.list = true
 
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- already shown in status line
 vim.o.showmode = false
@@ -56,14 +56,12 @@ vim.o.showmode = false
 -- use system clipboard
 -- vim.o.clipboard = 'unnamedplus'
 
-
 -- highlight on yank
 -- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
-

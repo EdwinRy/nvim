@@ -1,32 +1,30 @@
 function rose_pine()
-    require('rose-pine').setup({
+    require("rose-pine").setup({
         --- @usage 'main' | 'moon'
-        dark_variant = 'mocha',
+        dark_variant = "mocha",
         disable_background = true,
         disable_float_background = false,
 
         -- Change specific vim highlight groups
         highlight_groups = {
-            ColorColumn = { bg = 'rose' }
-        }
+            ColorColumn = { bg = "rose" },
+        },
     })
 
     -- set colorscheme after options
-    vim.cmd('colorscheme rose-pine')
+    vim.cmd("colorscheme rose-pine")
     vim.api.nvim_set_hl(0, "NonText", { fg = "#103e94" })
     -- vim.api.nvim_set_hl(0, "SpecialKey", { fg = "#103e94" })
 
     vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0a2861" })
 end
 
-function rose_pine_opaque()
-
-end
+function rose_pine_opaque() end
 
 function cattpuccin(transparent)
     require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = {         -- :h background
+        background = { -- :h background
             light = "latte",
             dark = "mocha",
         },
@@ -99,7 +97,7 @@ function cattpuccin(transparent)
     })
 
     -- setup must be called before loading
-    vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme("catppuccin")
     vim.api.nvim_set_hl(0, "NonText", { fg = "#103e94" })
 end
 
