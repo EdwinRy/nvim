@@ -104,8 +104,5 @@ return {
         "nvim-lua/plenary.nvim",
         "debugloop/telescope-undo.nvim",
     },
-    cond = function()
-        return not vim.g.vscode
-    end,
     config = config,
 }

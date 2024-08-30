@@ -1,14 +1,11 @@
 return {
     "VonHeikemen/lsp-zero.nvim",
-    cond = function()
-        return not vim.g.vscode
-    end,
     config = function()
         require("plugin-config.lsp")
     end,
     dependencies = {
 
-        { "jose-elias-alvarez/null-ls.nvim" },
+        -- { "jose-elias-alvarez/null-ls.nvim" },
 
         -- LSP Support
         { "neovim/nvim-lspconfig" },

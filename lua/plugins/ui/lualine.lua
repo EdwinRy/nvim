@@ -1,8 +1,5 @@
 return {
     "nvim-lualine/lualine.nvim",
-    cond = function()
-        return not vim.g.vscode
-    end,
     config = function()
         require("lualine").setup({
             options = {
