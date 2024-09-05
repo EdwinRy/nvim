@@ -3,7 +3,7 @@ return {
     config = function()
         require("markview").setup({
             filetypes = { "markdown", "octo", "quarto", "rmd" },
-            buf_ignore = {},
+            buf_ignore = { "nofile" },
         })
         vim.keymap.set(
             "n",

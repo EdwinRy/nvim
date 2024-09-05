@@ -47,35 +47,35 @@ local function config()
     require("telescope").load_extension("session-lens")
     -- vim.cmd("Telescope lsp_references show_line=false")
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Search by filename" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "f", builtin.find_files, { desc = "Search by filename" })
     vim.keymap.set(
         "n",
-        "<leader>fu",
+        KeyGroup.telescope.prefix .. "u",
         ":Telescope find_files find_command=rg,--ignore,--hidden,--files,-u<CR>",
         { desc = "Grep in files unrestricted" }
     )
-    vim.keymap.set("n", "<leader>fgr", builtin.live_grep, { desc = "Search for file contents" })
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Search for file contents" })
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Search open buffers" })
-    vim.keymap.set("n", "<leader>f?", builtin.help_tags, { desc = "Search help tags" })
-    vim.keymap.set("n", "<leader>fgi", builtin.git_files, { desc = "Search git files" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "gr", builtin.live_grep, { desc = "Search for file contents" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "g", builtin.live_grep, { desc = "Search for file contents" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "b", builtin.buffers, { desc = "Search open buffers" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "?", builtin.help_tags, { desc = "Search help tags" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "gi", builtin.git_files, { desc = "Search git files" })
 
-    vim.keymap.set("n", "<leader>fol", builtin.oldfiles, { desc = "Search old files" })
-    vim.keymap.set("n", "<leader>fic", builtin.lsp_incoming_calls, { desc = "List incoming calls" })
-    vim.keymap.set("n", "<leader>foc", builtin.lsp_outgoing_calls, { desc = "List outgoing calls" })
-    vim.keymap.set("n", "<leader>fp", builtin.diagnostics, { desc = "List diagnostics" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "ol", builtin.oldfiles, { desc = "Search old files" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "ic", builtin.lsp_incoming_calls, { desc = "List incoming calls" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "oc", builtin.lsp_outgoing_calls, { desc = "List outgoing calls" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "p", builtin.diagnostics, { desc = "List diagnostics" })
 
-    vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "List references" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "r", builtin.lsp_references, { desc = "List references" })
     vim.keymap.set(
         "n",
-        "<leader>fim",
+        KeyGroup.telescope.prefix .. "im",
         builtin.lsp_implementations,
         { desc = "List implementations" }
     )
-    vim.keymap.set("n", "<leader>fd", builtin.lsp_definitions, { desc = "List definitions" })
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "d", builtin.lsp_definitions, { desc = "List definitions" })
     vim.keymap.set(
         "n",
-        "<leader>ft",
+        KeyGroup.telescope.prefix .. "t",
         builtin.lsp_type_definitions,
         { desc = "List type definitions" }
     )
@@ -89,12 +89,12 @@ local function config()
         { desc = "Fuzzy find in current buffer" }
     )
 
-    vim.keymap.set("v", "<leader>fv", function()
+    vim.keymap.set("v", KeyGroup.telescope.prefix .. "v", function()
         builtin.live_grep({ default_text = getVisualSelection() })
     end, { desc = "Live grep for selected text" })
 
     require("telescope").load_extension("undo")
-    vim.keymap.set("n", "<leader>fh", "<cmd>Telescope undo<cr>")
+    vim.keymap.set("n", KeyGroup.tabs.prefix .. "h", "<cmd>Telescope undo<cr>")
 end
 
 return {

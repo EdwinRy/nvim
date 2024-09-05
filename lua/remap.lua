@@ -2,13 +2,13 @@
 vim.g.mapleader = " "
 
 -- WINDOW CONTROLS
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Move the cursor to the window on the left" })
-vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Move the cursor to the window below" })
-vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Move the cursor to the window above" })
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Move the cursor to the window on the right" })
-vim.keymap.set("n", "<leader>wo", "<C-w>o", { desc = "Close all windows apart from current" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "h", "<C-w>h", { desc = "Move the cursor to the window on the left" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "j", "<C-w>j", { desc = "Move the cursor to the window below" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "k", "<C-w>k", { desc = "Move the cursor to the window above" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "l", "<C-w>l", { desc = "Move the cursor to the window on the right" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "o", "<C-w>o", { desc = "Close all windows apart from current" })
 
-vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equalize window sizes" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "=", "<C-w>=", { desc = "Equalize window sizes" })
 
 vim.keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move the cursor to the window on the left" })
 vim.keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move the cursor to the window below" })
@@ -56,21 +56,21 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<M-+>", "<C-w>=", { desc = "Equalize window sizes" })
 
-vim.keymap.set("n", "<leader>wH", "<C-w>H", { desc = "Move focused window to far left" })
-vim.keymap.set("n", "<leader>wJ", "<C-w>J", { desc = "Move focused window to the bottom" })
-vim.keymap.set("n", "<leader>wK", "<C-w>K", { desc = "Move focused window to the top" })
-vim.keymap.set("n", "<leader>wL", "<C-w>L", { desc = "Move focused window to the far right" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "H", "<C-w>H", { desc = "Move focused window to far left" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "J", "<C-w>J", { desc = "Move focused window to the bottom" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "K", "<C-w>K", { desc = "Move focused window to the top" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "L", "<C-w>L", { desc = "Move focused window to the far right" })
 
-vim.keymap.set("n", "<leader>wr", "<C-w>r", { desc = "Rotate windows" })
-vim.keymap.set("n", "<leader>wR", "<C-w>R", { desc = "Rotate windows the other way" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "r", "<C-w>r", { desc = "Rotate windows" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "R", "<C-w>R", { desc = "Rotate windows the other way" })
 
 vim.keymap.set("n", "<C-Right>", "<C-w>H")
 vim.keymap.set("n", "<C-Down>", "<C-w>J")
 vim.keymap.set("n", "<C-Up>", "<C-w>K")
 vim.keymap.set("n", "<C-Left>", "<C-w>L")
 
-vim.keymap.set("n", "<leader>wv", "<C-w>v<C-w>l", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>ws", "<C-w>s<C-w>j", { desc = "Split window horizontally" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "v", "<C-w>v<C-w>l", { desc = "Split window vertically" })
+vim.keymap.set("n", KeyGroup.pane.prefix .. "s", "<C-w>s<C-w>j", { desc = "Split window horizontally" })
 
 -- BUFFERS
 vim.keymap.set(
@@ -92,16 +92,18 @@ if not Bufferline_loaded then
 end
 
 -- TABS
-vim.keymap.set("n", "<leader>tn", ":tabnew<CR>", { desc = "New tab", silent = true })
-vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close tab", silent = true })
-vim.keymap.set("n", "<leader>t[", ":tabprev<CR>", { desc = "Previous tab", silent = true })
-vim.keymap.set("n", "<leader>t]", ":tabnext<CR>", { desc = "Next tab", silent = true })
+vim.keymap.set("n", KeyGroup.tabs.prefix .. "n", ":tabnew<CR>", { desc = "New tab", silent = true })
+vim.keymap.set("n", KeyGroup.tabs.prefix .. "c", ":tabclose<CR>", { desc = "Close tab", silent = true })
+vim.keymap.set("n", KeyGroup.tabs.prefix .. "[", ":tabprev<CR>", { desc = "Previous tab", silent = true })
+vim.keymap.set("n", KeyGroup.tabs.prefix .. "]", ":tabnext<CR>", { desc = "Next tab", silent = true })
 
 vim.keymap.set("n", "<C-M-[>", ":tabprev<CR>", { desc = "Previous tab", silent = true })
 vim.keymap.set("n", "<C-M-]>", ":tabnext<CR>", { desc = "Next tab", silent = true })
 
-vim.keymap.set("n", "<leader>tl", ":tabs<CR>", { desc = "List tabs", silent = true })
-vim.keymap.set("n", "<leader>tr", ":tabclose ", { desc = "Close tab..." })
+vim.keymap.set("n", KeyGroup.tabs.prefix .. "l", ":tabs<CR>", { desc = "List tabs", silent = true })
+vim.keymap.set("n", KeyGroup.tabs.prefix .. "r", ":tabclose ", { desc = "Close tab..." })
+
+
 
 -- MOVE HIGHLIGHT
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted text down" })

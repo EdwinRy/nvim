@@ -1,3 +1,4 @@
+require("globals")
 require("remap")
 require("set")
 

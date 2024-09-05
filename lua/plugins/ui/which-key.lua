@@ -42,26 +42,19 @@ local function config()
         end,
     })
 
-    wk.add({
-        { "<leader>w", group = "Window pane controls" },
-        { "<leader>g", group = "Games" },
-        { "<leader>o", group = "Octo.nvim" },
-        { "<leader>b", group = "Buffer operations" },
-        { "<leader>e", group = "File operations" },
-        { "<leader>l", group = "LSP" },
-        { "<leader>f", group = "Telescope search" },
-        { "<leader>0", group = "Launch plugins" },
-        { "<leader>c", group = "Editor config" },
-        { "<leader>v", group = "View options" },
-    })
+    local ks = {}
+    for _, v in pairs(KeyGroup) do
+        table.insert(ks, { "" .. v.prefix, group = v.desc })
+    end
+
+    wk.add(ks)
 end
+
+local x = {1, 2, 3, 4}
 
 return {
     "folke/which-key.nvim",
     priority = 20,
     config = config,
-    dependencies = {
-        "echasnovski/mini.icons",
-        "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons", },
 }

@@ -4,7 +4,7 @@ return {
     config = function()
         vim.keymap.set(
             "n",
-            "<leader>gb",
+            KeyGroup.games.prefix .. "b",
             ":BlackJackNewGame<CR>",
             { desc = "Blackjack", silent = true }
         )

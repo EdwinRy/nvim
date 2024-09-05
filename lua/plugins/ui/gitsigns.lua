@@ -34,6 +34,7 @@ return {
                     end
                 end, { desc = "Previous git change" })
 
+                map("n", "ghp", gitsigns.preview_hunk, { desc = "Preview hunk" })
                 -- Actions
                 -- map('n', '<leader>hs', gitsigns.stage_hunk, {desc = 'Stage hunk'})
                 -- map('n', '<leader>hr', gitsigns.reset_hunk, {desc = 'Reset hunk'})
