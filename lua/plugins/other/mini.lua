@@ -1,6 +1,7 @@
 return {
     "echasnovski/mini.nvim",
     version = "*",
+    cond = not vim.g.vscode,
     config = function()
         require("mini.splitjoin").setup({
             mappings = {
