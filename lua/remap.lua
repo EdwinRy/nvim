@@ -87,8 +87,8 @@ if not Bufferline_loaded then
     vim.keymap.set("n", "<leader>]", ":bn<CR>", { desc = "Open next buffer", silent = true })
     vim.keymap.set("n", "<leader>[", ":bp<CR>", { desc = "Open previous buffer", silent = true })
 
-    vim.keymap.set("n", "<M-]>", ":bn<CR>", { desc = "Open next buffer", silent = true })
-    vim.keymap.set("n", "<M-[>", ":bp<CR>", { desc = "Open previous buffer", silent = true })
+    vim.keymap.set({"n", "i"}, "<M-]>", ":bn<CR>", { desc = "Open next buffer", silent = true })
+    vim.keymap.set({"n", "i"}, "<M-[>", ":bp<CR>", { desc = "Open previous buffer", silent = true })
 end
 
 -- TABS

@@ -11,6 +11,7 @@ require("bufferline").setup({
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
         end,
+        sort_by = 'insert_after_current',
     },
     highlights = require("catppuccin.groups.integrations.bufferline").get(),
 })

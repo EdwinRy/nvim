@@ -147,6 +147,7 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers({
     function(server_name)
+        -- server_name = server_name == "tsserver" and "ts_ls" or server_name
         require("lspconfig")[server_name].setup({})
     end,
 })
