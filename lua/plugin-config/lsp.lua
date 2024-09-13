@@ -38,8 +38,9 @@ cmp.setup({
     sources = {
         { name = "path" },
         { name = "nvim_lsp", keyword_length = 1 },
-        { name = "buffer", keyword_length = 3 },
-        { name = "luasnip", keyword_length = 2 },
+        { name = "buffer", keyword_length = 1 },
+        { name = "luasnip", keyword_length = 1 },
+        { name = "nvim_lsp_signature_help" },
     },
 })
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -145,10 +146,30 @@ mason_lspconfig.setup({
     },
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
+
 mason_lspconfig.setup_handlers({
     function(server_name)
         -- server_name = server_name == "tsserver" and "ts_ls" or server_name
-        require("lspconfig")[server_name].setup({})
+        require("lspconfig")[server_name].setup({ capabilities = capabilities })
+    end,
+    ["yamlls"] = function()
+        require("lspconfig").yamlls.setup({
+            capabilities = capabilities,
+            settings = {
+                yaml = {
+                    schemas = {
+                        kubernetes = "/*.yaml",
+                        -- Add the schema for gitlab piplines
+                        -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*.gitlab-ci.yml",
+                    },
+                },
+            },
+        })
     end,
 })
 
