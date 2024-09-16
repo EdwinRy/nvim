@@ -139,7 +139,7 @@ vim.diagnostic.config({
 require("mason").setup()
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({
-    ensure_installed = { "lua_ls", "html", "tsserver", "rust_analyzer" },
+    ensure_installed = { "lua_ls", "html", "ts_ls", "rust_analyzer" },
     automatic_installation = true,
     handlers = {
         lsp_zero.default_setup,

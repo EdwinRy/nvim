@@ -8,7 +8,7 @@ return {
         vim.keymap.set(
             "n",
             "<leader>vm",
-            ":Markview<CR>",
+            ":Markview toggle<CR>",
             { desc = "Toggle markdown preview", silent = true }
         )
     end,

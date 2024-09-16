@@ -13,5 +13,6 @@ return {
             "<cmd>DiffviewOpen origin/HEAD...HEAD --imply-local<cr>",
             { desc = "Diff origin/HEAD...HEAD" }
         )
+        vim.keymap.set("n", "<leader>0o", "<cmd>DiffviewOpen<cr>", { desc = "DiffviewOpen" })
     end,
 }

@@ -14,9 +14,15 @@ return {
                 typescript = { "prettierd", "prettier", stop_after_first = true },
                 typescriptreact = { "prettierd", "prettier", stop_after_first = true },
                 jsonc = { "prettierd", "prettier", stop_after_first = true },
+                markdown = {},
                 ["_"] = { "prettierd", "prettier", "lsp_format", "fallback" },
             },
             format_on_save = function(bufnr)
+                local ignore_filetypes = { "markdown" }
+                local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+                if vim.tbl_contains(ignore_filetypes, ft) then
+                    return
+                end
                 -- Disable with a global or buffer-local variable
                 if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                     return
