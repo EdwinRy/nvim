@@ -38,4 +38,5 @@ return {
     },
     { "Mofiqul/vscode.nvim" },
     { "EdenEast/nightfox.nvim" },
+    { "yorumicolors/yorumi.nvim" },
 }

@@ -65,6 +65,12 @@ return {
             require("fzf-lua").resume,
             { desc = "Resume search" }
         )
+        vim.keymap.set(
+            "n",
+            KeyGroup.fzfLua.prefix .. "j",
+            require("fzf-lua").jumps,
+            { desc = "Jumplist" }
+        )
 
         -- lsp
         vim.keymap.set("n", KeyGroup.fzfLua.prefix .. "d", function()

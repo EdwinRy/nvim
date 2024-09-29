@@ -1,10 +1,14 @@
-vim.o.sessionoptions = "buffers,curdir,folds"
+-- vim.o.sessionoptions = "buffers,curdir,folds"
+vim.o.sessionoptions =
+    "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 return {
     "rmagatti/auto-session",
-    cond = (function() return not vim.g.vscode end),
+    cond = function()
+        return not vim.g.vscode
+    end,
     config = function()
-        require("auto-session").setup {
+        require("auto-session").setup({
             auto_save_enabled = true,
             pre_save_cmds = { "tabdo NvimTreeClose" },
             post_restore_cmds = { "tabdo NvimTreeFindFile" },
@@ -19,11 +23,22 @@ return {
                 },
                 previewer = false, -- File preview for session picker
             },
-        }
-        vim.keymap.set("n", "<leader>fs", require("auto-session.session-lens").search_session, {
-            noremap = true, desc = "Search sessions"
         })
-        vim.keymap.set("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Delete session", silent = false })
-        vim.keymap.set("n", "<leader>sv", ":SessionSave<CR>", { desc = "Save session", silent = false })
-    end
+        vim.keymap.set("n", "<leader>fs", require("auto-session.session-lens").search_session, {
+            noremap = true,
+            desc = "Search sessions",
+        })
+        vim.keymap.set(
+            "n",
+            "<leader>sd",
+            ":SessionDelete<CR>",
+            { desc = "Delete session", silent = false }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>sv",
+            ":SessionSave<CR>",
+            { desc = "Save session", silent = false }
+        )
+    end,
 }
