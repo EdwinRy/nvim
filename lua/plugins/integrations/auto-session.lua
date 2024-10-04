@@ -10,10 +10,11 @@ return {
     config = function()
         require("auto-session").setup({
             auto_save_enabled = true,
+            auto_restore = false,
             pre_save_cmds = { "tabdo NvimTreeClose" },
-            post_restore_cmds = { "tabdo NvimTreeFindFile" },
+            -- post_restore_cmds = { "tabdo NvimTreeFindFile" },
             lazy_support = false,
-
+            bypass_save_filetypes = { "none" },
             session_lens = {
                 theme_conf = { -- Pass through for Telescope theme options
                     -- layout_config = { -- As one example, can change width/height of picker
@@ -24,10 +25,16 @@ return {
                 previewer = false, -- File preview for session picker
             },
         })
-        vim.keymap.set("n", "<leader>fs", require("auto-session.session-lens").search_session, {
+        vim.keymap.set("n", "<leader>sf", require("auto-session.session-lens").search_session, {
             noremap = true,
             desc = "Search sessions",
         })
+        vim.keymap.set(
+            "n",
+            "<leader>sr",
+            ":SessionRestore<CR>",
+            { desc = "Restore session", silent = false }
+        )
         vim.keymap.set(
             "n",
             "<leader>sd",

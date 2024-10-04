@@ -47,32 +47,92 @@ local function config()
     require("telescope").load_extension("session-lens")
     -- vim.cmd("Telescope lsp_references show_line=false")
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "f", builtin.find_files, { desc = "Search by filename" })
     vim.keymap.set(
         "n",
-        KeyGroup.telescope.prefix .. "u",
-        ":Telescope find_files find_command=rg,--ignore,--hidden,--files,-u<CR>",
-        { desc = "Grep in files unrestricted" }
+        KeyGroup.telescope.prefix .. "f",
+        builtin.find_files,
+        { desc = "Search by filename" }
     )
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "gr", builtin.live_grep, { desc = "Search for file contents" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "g", builtin.live_grep, { desc = "Search for file contents" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "b", builtin.buffers, { desc = "Search open buffers" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "?", builtin.help_tags, { desc = "Search help tags" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "gi", builtin.git_files, { desc = "Search git files" })
+    -- vim.keymap.set(
+    --     "n",
+    --     KeyGroup.telescope.prefix .. "u",
+    --     ":Telescope find_files find_command=rg,--ignore,--hidden,--files,-u<CR>",
+    --     { desc = "Grep in files unrestricted" }
+    -- )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "gr",
+        builtin.live_grep,
+        { desc = "Search for file contents" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "g",
+        builtin.live_grep,
+        { desc = "Search for file contents" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "b",
+        builtin.buffers,
+        { desc = "Search open buffers" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "?",
+        builtin.help_tags,
+        { desc = "Search help tags" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "gi",
+        builtin.git_files,
+        { desc = "Search git files" }
+    )
 
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "ol", builtin.oldfiles, { desc = "Search old files" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "ic", builtin.lsp_incoming_calls, { desc = "List incoming calls" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "oc", builtin.lsp_outgoing_calls, { desc = "List outgoing calls" })
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "p", builtin.diagnostics, { desc = "List diagnostics" })
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "ol",
+        builtin.oldfiles,
+        { desc = "Search old files" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "ic",
+        builtin.lsp_incoming_calls,
+        { desc = "List incoming calls" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "oc",
+        builtin.lsp_outgoing_calls,
+        { desc = "List outgoing calls" }
+    )
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "p",
+        builtin.diagnostics,
+        { desc = "List diagnostics" }
+    )
 
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "r", builtin.lsp_references, { desc = "List references" })
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "r",
+        builtin.lsp_references,
+        { desc = "List references" }
+    )
     vim.keymap.set(
         "n",
         KeyGroup.telescope.prefix .. "im",
         builtin.lsp_implementations,
         { desc = "List implementations" }
     )
-    vim.keymap.set("n", KeyGroup.telescope.prefix .. "d", builtin.lsp_definitions, { desc = "List definitions" })
+    vim.keymap.set(
+        "n",
+        KeyGroup.telescope.prefix .. "d",
+        builtin.lsp_definitions,
+        { desc = "List definitions" }
+    )
     vim.keymap.set(
         "n",
         KeyGroup.telescope.prefix .. "t",
@@ -95,6 +155,7 @@ local function config()
 
     require("telescope").load_extension("undo")
     vim.keymap.set("n", KeyGroup.tabs.prefix .. "h", "<cmd>Telescope undo<cr>")
+    vim.keymap.set("n", KeyGroup.telescope.prefix .. "h", "<cmd>Telescope undo<cr>")
 end
 
 return {

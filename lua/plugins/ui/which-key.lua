@@ -50,11 +50,9 @@ local function config()
     wk.add(ks)
 end
 
-local x = {1, 2, 3, 4}
-
 return {
     "folke/which-key.nvim",
     priority = 20,
     config = config,
-    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons", },
+    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons" },
 }

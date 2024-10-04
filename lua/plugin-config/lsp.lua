@@ -17,7 +17,7 @@ local lspkind = require("lspkind")
 cmp.setup({
     formatting = {
         format = lspkind.cmp_format({
-            mode = "symbol", -- show only symbol annotations
+            mode = "symbol_text", -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             -- can also be a function to dynamically calculate max width such as
             -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
@@ -37,10 +37,22 @@ cmp.setup({
     }),
     sources = {
         { name = "path" },
-        { name = "nvim_lsp", keyword_length = 1 },
-        { name = "buffer", keyword_length = 1 },
-        { name = "luasnip", keyword_length = 1 },
-        { name = "nvim_lsp_signature_help" },
+        {
+            name = "nvim_lsp",
+            keyword_length = 0,
+            entry_filter = function(entry, ctx)
+                return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+            end,
+        },
+        {
+            name = "buffer",
+            keyword_length = 0,
+            entry_filter = function(entry, ctx)
+                return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+            end,
+        },
+        { name = "luasnip", keyword_length = 0 },
+        -- { name = "nvim_lsp_signature_help" },
     },
 })
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -76,7 +88,7 @@ lsp_zero.on_attach(function(client, bufnr)
     )
     vim.keymap.set(
         "n",
-        "<leader>li",
+        "<leader>lm",
         vim.lsp.buf.implementation,
         { desc = "Got to implementation", buffer = bufnr, remap = false }
     )
@@ -143,6 +155,26 @@ mason_lspconfig.setup({
     automatic_installation = true,
     handlers = {
         lsp_zero.default_setup,
+        omnisharp = function()
+            require("lspconfig").omnisharp.setup({
+                handlers = { ["textDocument/definition"] = require("omnisharp_extended").handler },
+            })
+        end,
+        csharp_ls = function()
+            require("lspconfig").csharp_ls.setup({
+                handlers = {
+                    ["textDocument/definition"] = require("csharpls_extended").handler,
+                    ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
+                },
+                capabilities = {
+                    workspace = {
+                        didChangeWatchedFiles = {
+                            dynamicRegistration = true,
+                        },
+                    },
+                },
+            })
+        end,
     },
 })
 
@@ -155,7 +187,7 @@ capabilities.textDocument.foldingRange = {
 mason_lspconfig.setup_handlers({
     function(server_name)
         -- server_name = server_name == "tsserver" and "ts_ls" or server_name
-        require("lspconfig")[server_name].setup({ capabilities = capabilities })
+        -- require("lspconfig")[server_name].setup({ capabilities = capabilities })
     end,
     ["yamlls"] = function()
         require("lspconfig").yamlls.setup({
