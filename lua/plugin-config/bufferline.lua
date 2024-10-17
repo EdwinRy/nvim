@@ -12,7 +12,7 @@ require("bufferline").setup({
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
         end,
-        sort_by = "insert_after_current",
+        -- sort_by = "insert_after_current",
         -- hover = {
         --     enabled = true,
         --     -- delay = 200,

@@ -3,7 +3,7 @@ return {
     config = function()
         vim.keymap.set(
             "n",
-            "<leader>ce",
+            "<leader>tsc",
             ":TSContextToggle<CR>",
             { desc = "Toggle treesitter context" }
         )

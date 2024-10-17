@@ -49,6 +49,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.completeopt = "menuone,noselect"
+-- vim.o.completeopt = "fuzzy"
 
 -- editing mode already shown in status line
 vim.o.showmode = false

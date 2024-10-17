@@ -1,5 +1,7 @@
 return {
-    "hrsh7th/nvim-cmp",
+    -- "hrsh7th/nvim-cmp",
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
     dependencies = {
         -- Snippet Engine & its associated nvim-cmp source
         "L3MON4D3/LuaSnip",

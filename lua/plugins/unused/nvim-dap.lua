@@ -1,21 +1,11 @@
--- return {
---     "rcarriga/nvim-dap-ui",
---     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
---     config = function()
---         require("neodev").setup({
---             library = { plugins = { "nvim-dap-ui" }, types = true },
---         })
---     end,
--- }
-
 return {
     "mfussenegger/nvim-dap",
     dependencies = {
-        "jay-babu/mason-nvim-dap.nvim",
+        -- "jay-babu/mason-nvim-dap.nvim",
         "rcarriga/nvim-dap-ui",
-        "theHamsta/nvim-dap-virtual-text",
-        "mxsdev/nvim-dap-vscode-js",
-        "microsoft/vscode-js-debug",
+        -- "theHamsta/nvim-dap-virtual-text",
+        -- "mxsdev/nvim-dap-vscode-js",
+        -- "microsoft/vscode-js-debug",
         -- "stevearc/overseer.nvim",
     },
     config = function()

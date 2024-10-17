@@ -53,7 +53,7 @@ function cattpuccin(transparent)
         color_overrides = {},
         custom_highlights = {},
         integrations = {
-            cmp = true,
+            -- cmp = true,
             gitsigns = true,
             nvimtree = true,
             telescope = true,

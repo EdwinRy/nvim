@@ -58,7 +58,7 @@ cmp.setup({
         -- { name = "nvim_lsp_signature_help" },
     },
 })
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- disable completion with tab
 -- this helps with copilot setup
@@ -151,35 +151,6 @@ lsp_zero.setup()
 vim.diagnostic.config({
     virtual_text = true,
 })
-require("mason").setup()
-local mason_lspconfig = require("mason-lspconfig")
-mason_lspconfig.setup({
-    ensure_installed = { "lua_ls", "html", "ts_ls", "rust_analyzer" },
-    automatic_installation = true,
-    handlers = {
-        lsp_zero.default_setup,
-        omnisharp = function()
-            require("lspconfig").omnisharp.setup({
-                handlers = { ["textDocument/definition"] = require("omnisharp_extended").handler },
-            })
-        end,
-        csharp_ls = function()
-            require("lspconfig").csharp_ls.setup({
-                handlers = {
-                    ["textDocument/definition"] = require("csharpls_extended").handler,
-                    ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
-                },
-                capabilities = {
-                    workspace = {
-                        didChangeWatchedFiles = {
-                            dynamicRegistration = true,
-                        },
-                    },
-                },
-            })
-        end,
-    },
-})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
@@ -187,31 +158,34 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
-mason_lspconfig.setup_handlers({
-    function(server_name)
-        -- server_name = server_name == "tsserver" and "ts_ls" or server_name
-        -- require("lspconfig")[server_name].setup({ capabilities = capabilities })
-    end,
-    ["yamlls"] = function()
-        require("lspconfig").yamlls.setup({
-            capabilities = capabilities,
-            settings = {
-                yaml = {
-                    schemas = {
-                        kubernetes = "/*.yaml",
-                        -- Add the schema for gitlab piplines
-                        -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*.gitlab-ci.yml",
-                    },
+require("mason").setup()
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup({
+    ensure_installed = { "lua_ls", "html", "ts_ls", "rust_analyzer" },
+    automatic_installation = true,
+    handlers = {
+        lsp_zero.default_setup,
+        ["omnisharp"] = function()
+            require("lspconfig").omnisharp.setup({
+                handlers = {
+                    ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+                    ["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
+                    ["textDocument/references"] = require("omnisharp_extended").references_handler,
+                    ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
                 },
-            },
-        })
-    end,
+            })
+        end,
+        ["eslint"] = function()
+            require("lspconfig").eslint.setup({
+                capabilities = capabilities,
+                flags = {
+                    allow_incremental_sync = false,
+                    debounce_text_changes = 1000,
+                },
+                settings = {
+                    run = "onSave",
+                },
+            })
+        end,
+    },
 })
-
--- local null_ls = require("null-ls")
--- null_ls.setup({
---     sources = {
---         null_ls.builtins.formatting.prettier.with({
---             extra_args = { "--config", ".prettierrc.json" },
---         }) }
--- })

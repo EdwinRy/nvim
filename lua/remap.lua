@@ -276,6 +276,9 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" 
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy line to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Cut to clipboard" })
 
+vim.keymap.set("n", "<Enter>", "o<ESC>", { desc = "Insert newline below" })
+vim.keymap.set("n", "<S-Enter>", "O<ESC>", { desc = "Insert newline above" })
+
 -- extra user commands
 
 vim.api.nvim_create_user_command("Q", "q", {})

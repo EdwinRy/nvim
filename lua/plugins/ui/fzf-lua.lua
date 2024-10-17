@@ -2,15 +2,22 @@ CWD_only = true
 
 return {
     "ibhagwan/fzf-lua",
-    -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-        -- calling `setup` is optional for customization
         require("fzf-lua").setup({
             fzf_args = "--wrap",
+            files = {
+                actions = {
+                    ["default"] = require("fzf-lua.actions").file_edit,
+                },
+            },
+            grep = {
+                actions = {
+                    ["default"] = require("fzf-lua.actions").file_edit,
+                },
+            },
         })
 
-        -- basic
         vim.keymap.set(
             "n",
             KeyGroup.fzfLua.prefix .. "f",
