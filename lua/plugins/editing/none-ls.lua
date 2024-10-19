@@ -8,6 +8,7 @@ return {
         null_ls.setup({
             sources = {
                 require("none-ls.diagnostics.eslint_d"),
+                require("none-ls.code_actions.eslint_d"),
             },
         })
     end,

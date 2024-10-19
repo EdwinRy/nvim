@@ -27,7 +27,7 @@ return {
     },
     keys = {
         {
-            "/",
+            "s",
             mode = { "n", "x", "o" },
             function()
                 require("flash").jump({
@@ -37,7 +37,7 @@ return {
             desc = "Flash",
         },
         {
-            "?",
+            "S",
             mode = { "n", "x", "o" },
             function()
                 require("flash").jump({
@@ -47,7 +47,7 @@ return {
             desc = "Flash",
         },
         {
-            "n",
+            "<leader>c",
             mode = { "n", "x", "o" },
             function()
                 require("flash").jump({ continue = true })
