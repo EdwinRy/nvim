@@ -64,10 +64,15 @@ cmp.setup({
 -- this helps with copilot setup
 -- cmp_mappings['<Tab>'] = nil
 -- cmp_mappings['<S-Tab>'] = nil
--- vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("")')
+
 vim.api.nvim_set_keymap("i", "<C-/>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+vim.api.nvim_set_keymap("i", "<M-'>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+vim.keymap.set("i", "<M-;>", "<Plug>(copilot-accept-word)")
+
+-- vim.g.copilot_no_tab_map = true
 
 vim.cmd("let g:copilot_no_tab_map = v:true")
+vim.cmd("let g:copilot_no_s_tab_map = v:true")
 
 vim.api.nvim_create_user_command("CopilotToggle", function()
     vim.g.copilot_enabled = not vim.g.copilot_enabled
