@@ -18,7 +18,7 @@ return {
                 find = "<leader>sf", -- Find surrounding (to the right)
                 find_left = "<leader>sF", -- Find surrounding (to the left)
                 highlight = "<leader>sh", -- Highlight surrounding
-                replace = "<leader>sr", -- Replace surrounding
+                replace = "<leader>sc", -- Replace surrounding
                 update_n_lines = "<leader>sn", -- Update `n_lines`
 
                 suffix_last = "l", -- Suffix to search with "prev" method
