@@ -66,3 +66,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = highlight_group,
     pattern = "*",
 })
+
+function _G.CustomFoldText()
+    return vim.fn.getline(vim.v.foldstart)
+        .. " ... "
+        .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end
+
+vim.o.foldmethod = "expr"
+vim.o.foldlevel = 99
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldtext = "nvim_treesitter#foldtext()"
+vim.opt.foldtext = "v:lua.CustomFoldText()"
+vim.cmd("set nofoldenable")

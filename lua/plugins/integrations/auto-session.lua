@@ -33,19 +33,19 @@ return {
             "n",
             "<leader>sr",
             ":SessionRestore<CR>",
-            { desc = "Restore session", silent = false }
+            { desc = "Restore session", silent = true }
         )
         vim.keymap.set(
             "n",
             "<leader>sd",
             ":SessionDelete<CR>",
-            { desc = "Delete session", silent = false }
+            { desc = "Delete session", silent = true }
         )
         vim.keymap.set(
             "n",
             "<leader>sv",
             ":SessionSave<CR>",
-            { desc = "Save session", silent = false }
+            { desc = "Save session", silent = true }
         )
     end,
 }
