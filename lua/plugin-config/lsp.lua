@@ -29,6 +29,22 @@ cmp.setup({
             or nil,
     },
     mapping = cmp.mapping.preset.insert({
+        ["<C-a>"] = cmp.mapping({
+            i = function()
+                if cmp.visible() then
+                    cmp.abort()
+                else
+                    cmp.complete()
+                end
+            end,
+            c = function()
+                if cmp.visible() then
+                    cmp.close()
+                else
+                    cmp.complete()
+                end
+            end,
+        }),
         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
         ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
@@ -56,6 +72,9 @@ cmp.setup({
         },
         { name = "luasnip", keyword_length = 0 },
         -- { name = "nvim_lsp_signature_help" },
+    },
+    completion = {
+        keyword_length = 0,
     },
 })
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
