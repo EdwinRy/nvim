@@ -8,6 +8,9 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 vim.opt.wrap = true
 vim.cmd("set wrap")
 vim.o.showbreak = "↪"
