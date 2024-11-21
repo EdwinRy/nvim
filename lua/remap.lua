@@ -193,14 +193,14 @@ vim.keymap.set(
 )
 
 -- BUFFERS
-vim.keymap.set(
-    { "n" },
-    "<leader>x",
-    ":bp<bar>vs<bar>bn<bar>bd<CR>",
-    { desc = "Delete current buffer", silent = true }
-)
-vim.keymap.set("n", "<leader>ba", ":bufdo bd<CR>", { desc = "Delete all buffers", silent = true })
-vim.keymap.set("n", "<leader>z", ":bd<CR>", { desc = "Close buffer and pane", silent = true })
+-- vim.keymap.set(
+--     { "n" },
+--     "<leader>x",
+--     ":bp<bar>vs<bar>bn<bar>bd<CR>",
+--     { desc = "Delete current buffer", silent = true }
+-- )
+-- vim.keymap.set("n", "<leader>ba", ":bufdo bd<CR>", { desc = "Delete all buffers", silent = true })
+-- vim.keymap.set("n", "<leader>z", ":bd<CR>", { desc = "Close buffer and pane", silent = true })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer and pane", silent = true })
 
 if not Bufferline_loaded then

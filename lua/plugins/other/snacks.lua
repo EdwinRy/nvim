@@ -71,6 +71,27 @@ return {
     },
     keys = {
         {
+            "<leader>x",
+            function()
+                Snacks.bufdelete()
+            end,
+            desc = "Delete Buffer",
+        },
+        {
+            "<leader>ba",
+            function()
+                Snacks.bufdelete.all()
+            end,
+            desc = "Delete All Buffers",
+        },
+        {
+            "<leader>bz",
+            function()
+                Snacks.bufdelete.other()
+            end,
+            desc = "Delete Other Buffers",
+        },
+        {
             "<leader>un",
             function()
                 Snacks.notifier.hide()

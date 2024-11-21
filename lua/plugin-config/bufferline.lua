@@ -111,12 +111,12 @@ vim.keymap.set(
     ":BufferLinePickClose<CR>",
     { desc = "Close picked buffer", silent = true }
 )
-vim.keymap.set(
-    "n",
-    "<leader>bz",
-    ":BufferLineCloseOthers<CR>",
-    { desc = "Close all but current buffer", silent = true }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>bz",
+--     ":BufferLineCloseOthers<CR>",
+--     { desc = "Close all but current buffer", silent = true }
+-- )
 vim.keymap.set(
     "n",
     "<leader>bg",

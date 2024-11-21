@@ -8,7 +8,11 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.cmd("set wrap")
+vim.o.showbreak = "↪"
+vim.o.breakindent = true
+vim.o.linebreak = true
 
 vim.opt.swapfile = false
 -- vim.opt.backup = false
