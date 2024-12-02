@@ -18,14 +18,14 @@ local lspKindExists, lspkind = pcall(require, "lspkind")
 cmp.setup({
     formatting = {
         format = lspKindExists
-                and lspkind.cmp_format({
-                    mode = "symbol_text", -- show only symbol annotations
-                    maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                    -- can also be a function to dynamically calculate max width such as
-                    -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-                    ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-                    show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-                })
+            and lspkind.cmp_format({
+                mode = "symbol_text", -- show only symbol annotations
+                maxwidth = 50,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                -- can also be a function to dynamically calculate max width such as
+                -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+                ellipsis_char = "...",    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+            })
             or nil,
     },
     mapping = cmp.mapping.preset.insert({
@@ -101,6 +101,12 @@ end, { nargs = 0 })
 vim.keymap.set("n", "<leader>cp", "<cmd>CopilotToggle<cr>", { noremap = true })
 
 lsp_zero.on_attach(function(client, bufnr)
+    vim.keymap.set(
+        "n",
+        "<leader>ll",
+        function() vim.cmd("LspRestart") end,
+        { desc = "Restart LSP Server", buffer = bufnr, remap = false }
+    )
     vim.keymap.set(
         "n",
         "<leader>lf",
